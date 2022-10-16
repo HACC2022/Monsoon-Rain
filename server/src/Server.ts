@@ -12,17 +12,19 @@ import "@tsed/typegraphql";
 import "./datasources/index";
 import "./resolvers/index";
 import {config} from "./config/index";
-import * as rest from "./controllers/rest/index";
+
+const rootDir = __dirname;
 
 @Configuration({
   ...config,
+  rootDir,
   acceptMimes: ["application/json"],
   httpPort: process.env.PORT || 8083,
   httpsPort: false, // CHANGE
   componentsScan: false,
   mount: {
     "/rest": [
-      ...Object.values(rest)
+      `${rootDir}/controllers/**/*.ts` // Automatic Import, /!\ doesn't works with webpack/jest, use  require.context() or manual import instead
     ]
   },
   middlewares: [
