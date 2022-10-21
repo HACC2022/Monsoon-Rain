@@ -1,0 +1,28 @@
+<div class="bg-zinc-800 px-16 md:px-32 py-16">
+	<div class="text-zinc-300">
+		{{ code }} –
+		{{ measureTitle }}
+	</div>
+	
+	<div class="text-white uppercase text-3xl py-1 font-bold">
+		{{ reportTitle }}
+	</div>
+	<div class="text-zinc-300 text-sm pb-5">
+		Introduced by <span class="font-bold">{{ introducer }}</span>
+	</div>
+	<div class="text-zinc-300 pb-10">
+		{{ description }}
+	</div>
+	<div class="pb-10">
+		<span class="mr-2" *ngFor="let office of offices">
+			<app-pill>
+				{{ office }}
+			</app-pill>
+		</span>
+	</div>
+	<div>
+		<span class="-mr-4" *ngFor="let user of users">
+			<app-avatar [name]="user"></app-avatar>
+		</span>
+	</div>
+</div>
