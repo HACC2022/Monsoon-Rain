@@ -1,7 +1,19 @@
-<div class="grid sm:grid-cols-1 md:grid-cols-3 gap-5 gap-y-16 px-32 py-12">
+<div class="grid sm:grid-cols-1 md:grid-cols-3 gap-5 gap-y-16 px-16 md:px-32 py-12">
 	<app-data-display [label]="'Status'" [data]="'Deferred/inactive'"></app-data-display>
 	<app-data-display [label]="'Action'" [data]="'Testimony'"></app-data-display>
 	<app-data-display [label]="'Last Updated'" [data]="'06/22/3333 13:45'"></app-data-display>
 	<app-data-display [label]="'Companion Bill'" [data]="'Deferred/inactive'"></app-data-display>
 	<app-data-display [label]="'Current Referrer'" [data]="'Testimony'"></app-data-display>
+</div>
+
+<div class="grid sm:grid-cols-1 md:grid-cols-2 gap-5 gap-y-16 px-16 md:px-32 py-12">
+	<app-icon-data-display [label]="'Videos'" [data]="[{data: 'HEARING_EDN_02-16-21_2:00P', url: 'http://google.com'}]">
+	</app-icon-data-display>
+	<app-icon-data-display [label]="'Versions'" [data]="[{data: 'HB1078_HD1', url: 'http://google.com'}]">
+	</app-icon-data-display>
+	<app-icon-data-display [label]="'Reports'" [data]="[{ data: 'HB1078_HD1_HSCR479', url: 'http://google.com' }]">
+	</app-icon-data-display>
+	<app-icon-data-display [label]="'Date & Location'"
+		[data]="[{ data: 'Tue 3/2/2021 at 11:00 AM' }, { data: '308 Via Videoconference' }]">
+	</app-icon-data-display>
 </div>
