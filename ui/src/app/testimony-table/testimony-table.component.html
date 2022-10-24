@@ -1,4 +1,35 @@
-<div class="overflow-x-auto relative">
+<div class="overflow-x-auto relative pb-16">
+  <div class="rounded-t px-5 py-4 bg-gray-50 border-b">
+    <div class="flex justify-between content-center ">
+      <div class="text-lg font-bold">
+        Testimony for HB 1078
+      </div>
+      <div
+        class="cursor-pointer underline decoration-2 underline-offset-4 hover:text-green-600 transition-colors duration-100">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-5 h-5 float-left pr-1">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+        <span class="text-sm">
+          Add Testimony
+        </span>
+      </div>
+    </div>
+    <div class="mt-5">
+      <span class="-mr-2">
+        <app-avatar [name]="'Joe Mama'"></app-avatar>
+      </span>
+      <span class="-mr-2">
+        <app-avatar [name]="'Bo Papa'"></app-avatar>
+      </span>
+      <span class="-mr-2">
+        <app-avatar [name]="'No Yata'"></app-avatar>
+      </span>
+      <span class="ml-5">
+        + Add assignee
+      </span>
+    </div>
+  </div>
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
@@ -17,46 +48,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+      <tr *ngFor="let row of rows" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-          Apple MacBook Pro 17"
+          {{ row.date }}
         </th>
         <td class="py-4 px-6">
-          Sliver
+          {{ row.status }}
         </td>
         <td class="py-4 px-6">
-          Laptop
+          {{ row.creator }}
         </td>
         <td class="py-4 px-6">
-          $2999
-        </td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-          Microsoft Surface Pro
-        </th>
-        <td class="py-4 px-6">
-          White
-        </td>
-        <td class="py-4 px-6">
-          Laptop PC
-        </td>
-        <td class="py-4 px-6">
-          $1999
-        </td>
-      </tr>
-      <tr class="bg-white dark:bg-gray-800">
-        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-          Magic Mouse 2
-        </th>
-        <td class="py-4 px-6">
-          Black
-        </td>
-        <td class="py-4 px-6">
-          Accessories
-        </td>
-        <td class="py-4 px-6">
-          $99
+          {{ row.testimony }}
         </td>
       </tr>
     </tbody>

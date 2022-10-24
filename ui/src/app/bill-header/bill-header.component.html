@@ -16,16 +16,11 @@
 	<div class="text-zinc-300 pb-10">
 		{{ description }}
 	</div>
-	<div class="pb-10">
+	<div>
 		<span class="mr-2" *ngFor="let office of offices">
 			<app-pill>
 				{{ office }}
 			</app-pill>
-		</span>
-	</div>
-	<div>
-		<span class="-mr-4" *ngFor="let user of users">
-			<app-avatar [name]="user"></app-avatar>
 		</span>
 	</div>
 </div>

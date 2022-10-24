@@ -14,7 +14,18 @@ import { ApprovalTimelineComponent } from './approval-timeline/approval-timeline
 import { TestimonyTableComponent } from './testimony-table/testimony-table.component';
 
 @NgModule({
-  declarations: [AppComponent, BillHeaderComponent, BillComponent, PillComponent, AvatarComponent, DataDisplayComponent, BillInformationComponent, IconDataDisplayComponent, ApprovalTimelineComponent, TestimonyTableComponent],
+  declarations: [
+    AppComponent,
+    BillHeaderComponent,
+    BillComponent,
+    PillComponent,
+    AvatarComponent,
+    DataDisplayComponent,
+    BillInformationComponent,
+    IconDataDisplayComponent,
+    ApprovalTimelineComponent,
+    TestimonyTableComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

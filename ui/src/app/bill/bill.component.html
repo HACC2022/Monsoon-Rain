@@ -4,6 +4,13 @@
 	[status]="'Introduced and Pass First Reading.'" [offices]="['OSS', 'OSIP']" [users]="['Joe Mama', 'Chase Papa']">
 </app-bill-header>
 
-<app-bill-information></app-bill-information>
+<div class="px-16 md:px-32">
 
-<app-approval-timeline></app-approval-timeline>
+	<app-bill-information></app-bill-information>
+
+	<app-approval-timeline></app-approval-timeline>
+
+	<app-testimony-table
+		[rows]="[{ date: '06/23/2020', status: 'Approved', creator: 'Joe Nakana', testimony: 'a few words about it' }]">
+	</app-testimony-table>
+</div>
