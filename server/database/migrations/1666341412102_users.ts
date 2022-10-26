@@ -13,6 +13,8 @@ export default class extends BaseSchema {
 
       table.text('email', 'longtext')
 
+      table.text('password', 'longtext')
+
       table.integer('position_id').references('position_id').inTable('positions')
 
       table.integer('office_id').references('office_id').inTable('offices')
