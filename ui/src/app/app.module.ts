@@ -14,6 +14,9 @@ import { ApprovalTimelineComponent } from './bill-components/approval-timeline/a
 import { TestimonyTableComponent } from './bill-components/testimony-table/testimony-table.component';
 import { BillsComponent } from './bill-list-components/bills/bills.component';
 import { BillCardComponent } from './bill-card/bill-card.component';
+import { BillSearchComponent } from './bill-search/bill-search.component';
+import { BillFilterComponent } from './bill-filter/bill-filter.component';
+import { BillActionsComponent } from './bill-actions/bill-actions.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { BillCardComponent } from './bill-card/bill-card.component';
     TestimonyTableComponent,
     BillsComponent,
     BillCardComponent,
+    BillSearchComponent,
+    BillFilterComponent,
+    BillActionsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
