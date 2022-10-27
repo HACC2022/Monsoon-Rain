@@ -1,18 +1,25 @@
 <div class="overflow-x-auto relative pb-16">
   <div class="rounded-t px-5 py-4 bg-gray-50 border-b">
-    <div class="flex justify-between content-center ">
-      <div class="text-lg font-bold">
-        Testimony for HB 1078
-      </div>
+    <div class="flex justify-between content-center">
+      <div class="text-lg font-bold">Testimony for HB 1078</div>
       <div
-        class="cursor-pointer underline decoration-2 underline-offset-4 hover:text-green-600 transition-colors duration-100">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-          class="w-5 h-5 float-left pr-1">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        class="cursor-pointer underline decoration-2 underline-offset-4 hover:text-green-600 transition-colors duration-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-5 h-5 float-left pr-1"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
         </svg>
-        <span class="text-sm">
-          Add Testimony
-        </span>
+        <span class="text-sm">Add Testimony</span>
       </div>
     </div>
     <div class="mt-5">
@@ -25,31 +32,24 @@
       <span class="-mr-2">
         <app-avatar [name]="'No Yata'"></app-avatar>
       </span>
-      <span class="ml-5">
-        + Add assignee
-      </span>
+      <span class="ml-5"> + Add assignee </span>
     </div>
   </div>
-  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+  <table class="w-full text-sm text-left text-gray-500">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
       <tr>
-        <th scope="col" class="py-3 px-6">
-          Date
-        </th>
-        <th scope="col" class="py-3 px-6">
-          Status
-        </th>
-        <th scope="col" class="py-3 px-6">
-          Creator
-        </th>
-        <th scope="col" class="py-3 px-6">
-          Testimony
-        </th>
+        <th scope="col" class="py-3 px-6">Date</th>
+        <th scope="col" class="py-3 px-6">Status</th>
+        <th scope="col" class="py-3 px-6">Creator</th>
+        <th scope="col" class="py-3 px-6">Testimony</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of rows" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+      <tr *ngFor="let row of rows" class="bg-white border-b">
+        <th
+          scope="row"
+          class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
+        >
           {{ row.date }}
         </th>
         <td class="py-4 px-6">
