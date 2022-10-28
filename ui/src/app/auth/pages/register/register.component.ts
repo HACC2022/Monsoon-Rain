@@ -10,24 +10,25 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm = new FormGroup({
-    firstName: new FormControl(null, [Validators.required]),
-    lastName: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required]),
-    confirmPassword: new FormControl(null, [Validators.required])
-  });
+  public registerForm: FormGroup;
 
   constructor(
     private router: Router,
     private authService: AuthService
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.registerForm = new FormGroup({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required])
+    });
+   }
 
   register() {
     console.log("registering...")
-    const firstName = this.registerForm.get('firstName')
     if (this.registerForm.valid) {
       console.log("is valid")
       // this.authService.register(this.registerForm.value).subscribe( res => {
@@ -35,7 +36,12 @@ export class RegisterComponent implements OnInit {
       //     console.log("success")
       //   }
       // })
-      this.authService.register(firstName, lastName, email, password)
+      this.authService.register(
+        this.registerForm.get('firstName')!.value,
+        this.registerForm.get('lastName')!.value,
+        this.registerForm.get('email')!.value,
+        this.registerForm.get('password')!.value,
+      );
     }
   }
 
