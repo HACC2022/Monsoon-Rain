@@ -18,6 +18,7 @@ import { BillSearchComponent } from './bill-search/bill-search.component';
 import { BillFilterComponent } from './bill-filter/bill-filter.component';
 import { BillActionsComponent } from './bill-actions/bill-actions.component';
 import { AssignActionComponent } from './assign-action/assign-action.component';
+import { BillFetchActionComponent } from './bill-fetch-action/bill-fetch-action.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AssignActionComponent } from './assign-action/assign-action.component';
     BillFilterComponent,
     BillActionsComponent,
     AssignActionComponent,
+    BillFetchActionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
