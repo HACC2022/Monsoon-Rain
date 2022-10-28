@@ -6,7 +6,7 @@
   }"
   class="transition-all duration-1000 mb-3"
 >
-  <div [ngClass]="{ 'pb-3': enabled }">
+  <div>
     <div
       (click)="swapEnable()"
       [ngClass]="{
@@ -38,28 +38,30 @@
     </div>
   </div>
   <div *ngIf="enabled">
-    <p class="text-sm text-gray-100 pb-3">
+    <p class="text-sm text-gray-100 pb-3 pt-2">
       Click on bills that you want the selected offices and/or users to be
       assigned to.
     </p>
     <p class="text-sm pb-3 font-bold text-white">Selected 0 bills</p>
+
     <label
       for="countries_multiple"
       class="block mb-2 text-sm font-medium text-gray-100"
-      >Users</label
+      >Assign Users</label
     >
     <select
+      (change)="assignUser($event)"
       multiple
       id="countries_multiple"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3"
     >
-      <option value="US">OSSS</option>
-      <option value="CA">GA</option>
+      <option value="OSSS">OSSS</option>
+      <option value="GA">GA</option>
     </select>
     <label
       for="countries_multiple"
       class="block mb-2 text-sm font-medium text-gray-100"
-      >Offices</label
+      >Assign Offices</label
     >
     <select
       multiple
@@ -71,6 +73,7 @@
     </select>
     <div class="text-right mt-3">
       <button
+        (click)="assign()"
         type="button"
         class="py-2 px-4 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
       >
