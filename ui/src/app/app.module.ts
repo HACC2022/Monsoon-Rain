@@ -19,6 +19,8 @@ import { BillFilterComponent } from './bill-filter/bill-filter.component';
 import { BillActionsComponent } from './bill-actions/bill-actions.component';
 import { AssignActionComponent } from './assign-action/assign-action.component';
 import { BillFetchActionComponent } from './bill-fetch-action/bill-fetch-action.component';
+import { ToastComponent } from './toast/toast.component';
+import { BillUpdateIntervalComponent } from './bill-update-interval/bill-update-interval.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { BillFetchActionComponent } from './bill-fetch-action/bill-fetch-action.
     BillActionsComponent,
     AssignActionComponent,
     BillFetchActionComponent,
+    ToastComponent,
+    BillUpdateIntervalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
