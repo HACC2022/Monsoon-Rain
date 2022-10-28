@@ -5,21 +5,5 @@
 
   <app-assign-action></app-assign-action>
   <app-bill-fetch-action></app-bill-fetch-action>
-
-  <div class="flex col-span-3 mt-6">
-    <div class="relative w-full">
-      <input
-        type="number"
-        class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-        placeholder="Bill update interval (minutes)"
-        required
-      />
-      <button
-        type="submit"
-        class="absolute top-0 right-0 p-2.5 text-sm font-medium text-gray-900 bg-white rounded-r border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300"
-      >
-        Set Interval
-      </button>
-    </div>
-  </div>
+  <app-bill-update-interval></app-bill-update-interval>
 </div>
