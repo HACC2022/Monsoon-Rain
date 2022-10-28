@@ -3,15 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BillHeaderComponent } from './bill-header/bill-header.component';
-import { BillComponent } from './bill/bill.component';
-import { PillComponent } from './pill/pill.component';
-import { AvatarComponent } from './avatar/avatar.component';
-import { DataDisplayComponent } from './data-display/data-display.component';
-import { BillInformationComponent } from './bill-information/bill-information.component';
-import { IconDataDisplayComponent } from './icon-data-display/icon-data-display.component';
-import { ApprovalTimelineComponent } from './approval-timeline/approval-timeline.component';
-import { TestimonyTableComponent } from './testimony-table/testimony-table.component';
+import { BillHeaderComponent } from './bill-components/bill-header/bill-header.component';
+import { BillComponent } from './bill-components/bill/bill.component';
+import { PillComponent } from './bill-components/pill/pill.component';
+import { AvatarComponent } from './bill-components/avatar/avatar.component';
+import { DataDisplayComponent } from './bill-components/data-display/data-display.component';
+import { BillInformationComponent } from './bill-components/bill-information/bill-information.component';
+import { IconDataDisplayComponent } from './bill-components/icon-data-display/icon-data-display.component';
+import { ApprovalTimelineComponent } from './bill-components/approval-timeline/approval-timeline.component';
+import { TestimonyTableComponent } from './bill-components/testimony-table/testimony-table.component';
+import { BillsComponent } from './bill-list-components/bills/bills.component';
+import { BillCardComponent } from './bill-card/bill-card.component';
+import { BillSearchComponent } from './bill-search/bill-search.component';
+import { BillFilterComponent } from './bill-filter/bill-filter.component';
+import { BillActionsComponent } from './bill-actions/bill-actions.component';
+import { AssignActionComponent } from './assign-action/assign-action.component';
+import { BillFetchActionComponent } from './bill-fetch-action/bill-fetch-action.component';
+import { ToastComponent } from './toast/toast.component';
+import { BillUpdateIntervalComponent } from './bill-update-interval/bill-update-interval.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +34,15 @@ import { TestimonyTableComponent } from './testimony-table/testimony-table.compo
     IconDataDisplayComponent,
     ApprovalTimelineComponent,
     TestimonyTableComponent,
+    BillsComponent,
+    BillCardComponent,
+    BillSearchComponent,
+    BillFilterComponent,
+    BillActionsComponent,
+    AssignActionComponent,
+    BillFetchActionComponent,
+    ToastComponent,
+    BillUpdateIntervalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
