@@ -41,7 +41,11 @@ export class RegisterComponent implements OnInit {
         this.registerForm.get('lastName')!.value,
         this.registerForm.get('email')!.value,
         this.registerForm.get('password')!.value,
-      );
+      ).subscribe( res => {
+        if (res.status) {
+          console.log('success')
+        }
+      });
     }
   }
 
