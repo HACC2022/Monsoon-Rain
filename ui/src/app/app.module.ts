@@ -13,14 +13,14 @@ import { IconDataDisplayComponent } from './bill-components/icon-data-display/ic
 import { ApprovalTimelineComponent } from './bill-components/approval-timeline/approval-timeline.component';
 import { TestimonyTableComponent } from './bill-components/testimony-table/testimony-table.component';
 import { BillsComponent } from './bill-list-components/bills/bills.component';
-import { BillCardComponent } from './bill-card/bill-card.component';
-import { BillSearchComponent } from './bill-search/bill-search.component';
-import { BillFilterComponent } from './bill-filter/bill-filter.component';
-import { BillActionsComponent } from './bill-actions/bill-actions.component';
-import { AssignActionComponent } from './assign-action/assign-action.component';
-import { BillFetchActionComponent } from './bill-fetch-action/bill-fetch-action.component';
+import { BillCardComponent } from './bill-list-components/bill-card/bill-card.component';
+import { BillSearchComponent } from './bill-list-components/bill-search/bill-search.component';
+import { BillFilterComponent } from './bill-list-components/bill-filter/bill-filter.component';
+import { BillActionsComponent } from './bill-list-components/bill-actions/bill-actions.component';
+import { AssignActionComponent } from './bill-list-components/assign-action/assign-action.component';
+import { BillFetchActionComponent } from './bill-list-components/bill-fetch-action/bill-fetch-action.component';
 import { ToastComponent } from './toast/toast.component';
-import { BillUpdateIntervalComponent } from './bill-update-interval/bill-update-interval.component';
+import { BillUpdateIntervalComponent } from './bill-list-components/bill-update-interval/bill-update-interval.component';
 
 @NgModule({
   declarations: [
