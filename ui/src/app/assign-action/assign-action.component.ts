@@ -25,7 +25,7 @@ export class AssignActionComponent implements OnInit {
     }
   }
 
-  assignOffices(event: Event) {
+  assignOffice(event: Event) {
     const target = event.target as HTMLSelectElement;
     const { selectedOptions } = target;
 
@@ -37,8 +37,10 @@ export class AssignActionComponent implements OnInit {
   // Update API
   assign() {
     if (this.assignedUsers.size > 0) {
+      console.log(this.assignedUsers);
     }
     if (this.assignedOffices.size > 0) {
+      console.log(this.assignedOffices);
     }
   }
 

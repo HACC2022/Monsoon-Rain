@@ -10,7 +10,7 @@ export class BillFilterComponent implements OnInit {
 
   constructor() {}
 
-  assignUser(event: Event) {
+  assignOffice(event: Event) {
     const target = event.target as HTMLSelectElement;
     const { selectedOptions } = target;
 
@@ -19,7 +19,9 @@ export class BillFilterComponent implements OnInit {
     }
   }
 
-  filter() {}
+  filter() {
+    console.log(this.offices);
+  }
 
   ngOnInit(): void {}
 }
