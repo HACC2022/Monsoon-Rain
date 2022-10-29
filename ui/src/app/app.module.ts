@@ -21,6 +21,8 @@ import { AssignActionComponent } from './bill-list-components/assign-action/assi
 import { BillFetchActionComponent } from './bill-list-components/bill-fetch-action/bill-fetch-action.component';
 import { ToastComponent } from './toast/toast.component';
 import { BillUpdateIntervalComponent } from './bill-list-components/bill-update-interval/bill-update-interval.component';
+import { TestimonyComponent } from './testimony/testimony.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { BillUpdateIntervalComponent } from './bill-list-components/bill-update-
     BillFetchActionComponent,
     ToastComponent,
     BillUpdateIntervalComponent,
+    TestimonyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
