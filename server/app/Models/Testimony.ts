@@ -16,8 +16,11 @@ export default class Testimony extends BaseModel {
   @belongsTo(() => User)
   public users_prepared_by: BelongsTo<typeof User>
 
+  // @column()
+  // public created_at: string
+
   @column()
-  public created_at: string
+  public body: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

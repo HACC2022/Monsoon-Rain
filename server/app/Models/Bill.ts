@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
 import Office from './Office'
+import User from './User'
 
 export default class Bill extends BaseModel {
   @column({ isPrimary: true })
@@ -26,9 +27,6 @@ export default class Bill extends BaseModel {
 
   @column()
   public committee_referral: string
-
-  @belongsTo(() => Office)
-  public office: BelongsTo<typeof Office>
 
   @column()
   public action: string
@@ -59,6 +57,12 @@ export default class Bill extends BaseModel {
 
   @column()
   public committee: string
+
+  @belongsTo(() => User)
+  public users: BelongsTo<typeof User>
+
+  @belongsTo(() => Office)
+  public offices: BelongsTo<typeof Office>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
