@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +28,12 @@ import { TestimonyPositionComponent } from './testimony-components/testimony-pos
 import { TestimonyEditorComponent } from './testimony-components/testimony-editor/testimony-editor.component';
 import { TestimonyCommentComponent } from './testimony-components/testimony-comment/testimony-comment.component';
 import { TestimonyCommentsComponent } from './testimony-components/testimony-comments/testimony-comments.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApprovalStatusComponent } from './bill-components/approval-status/approval-status.component';
+import { ApprovalApprovedComponent } from './approval-approved/approval-approved.component';
+import { ApprovalModifyComponent } from './approval-modify/approval-modify.component';
+import { ApprovalClearComponent } from './approval-clear/approval-clear.component';
+import { ApprovalMakePdfComponent } from './approval-make-pdf/approval-make-pdf.component';
+import { ApprovalStageComponent } from './approval-stage/approval-stage.component';
 
 @NgModule({
   declarations: [
@@ -53,8 +60,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TestimonyEditorComponent,
     TestimonyCommentComponent,
     TestimonyCommentsComponent,
+    ApprovalStatusComponent,
+    ApprovalApprovedComponent,
+    ApprovalModifyComponent,
+    ApprovalClearComponent,
+    ApprovalMakePdfComponent,
+    ApprovalStageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+  ],
   providers: [AssignService],
   bootstrap: [AppComponent],
 })

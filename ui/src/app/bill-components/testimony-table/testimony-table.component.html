@@ -47,7 +47,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of rows" class="bg-white">
+      <tr
+        *ngFor="let row of rows"
+        class="bg-white hover:bg-gray-100 cursor-pointer"
+        [routerLink]="['testimony', 1]"
+      >
         <th
           scope="row"
           class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"

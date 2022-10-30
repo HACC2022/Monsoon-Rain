@@ -7,6 +7,29 @@ import { Template, generate } from '@pdfme/generator';
   styleUrls: ['./approval-timeline.component.scss'],
 })
 export class ApprovalTimelineComponent implements OnInit {
+  stages = [
+    {
+      name: 'Ready for approval',
+      status: 'approved',
+      user: 'J. Preheim',
+    },
+    {
+      name: 'Office approval',
+      status: 'modify',
+      user: 'J. Preheim',
+    },
+    {
+      name: 'PIPE approval',
+      status: 'clear',
+      user: 'J. Preheim',
+    },
+    {
+      name: 'Final approval',
+      status: 'clear',
+      user: 'J. Preheim',
+    },
+  ];
+
   constructor() {}
 
   generatePDF() {

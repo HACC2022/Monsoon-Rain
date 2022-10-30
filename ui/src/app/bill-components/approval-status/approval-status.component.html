@@ -1,0 +1,31 @@
+<div class="relative">
+  <div (click)="swapShowOptions()">
+    <app-approval-approved
+      *ngIf="status === 'approved'"
+    ></app-approval-approved>
+    <app-approval-modify *ngIf="status === 'modify'"></app-approval-modify>
+    <app-approval-clear *ngIf="status === 'clear'"></app-approval-clear>
+  </div>
+
+  <div
+    *ngIf="show"
+    [@enterAnimation]
+    class="flex flex-row absolute transition-all duration-100 left-12 top-0"
+  >
+    <app-approval-approved
+      class="ml-3"
+      *ngIf="status !== 'approved'"
+      (click)="changeStageStatus('approved')"
+    ></app-approval-approved>
+    <app-approval-modify
+      class="ml-3"
+      *ngIf="status !== 'modify'"
+      (click)="changeStageStatus('modify')"
+    ></app-approval-modify>
+    <app-approval-clear
+      class="ml-3"
+      *ngIf="status !== 'clear'"
+      (click)="changeStageStatus('clear')"
+    ></app-approval-clear>
+  </div>
+</div>
