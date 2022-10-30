@@ -27,4 +27,17 @@ export class AuthService {
       })
     );
   }
+
+  login(email: string, password: string): Observable<any> {
+    // console.log(`${this.apiBaseUrl}/register`);
+    return this.http.post(`${this.apiBaseUrl}/login`, {
+      email: email,
+      password: password
+    }).pipe(
+      catchError((err) => {
+        console.error(err);
+        throw err;
+      })
+    );
+  }
 }

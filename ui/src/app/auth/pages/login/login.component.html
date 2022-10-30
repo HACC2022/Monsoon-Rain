@@ -1,1 +1,10 @@
-<p>login works!</p>
+<div>
+    <div>
+        <div>Placeholder</div>
+        <form [formGroup]="loginForm">
+            <input formControlName="email" type="text" required>
+            <input formControlName="password" type="text" required>
+            <button type="submit" (click)="login()">login</button>
+        </form>
+    </div>
+</div>
