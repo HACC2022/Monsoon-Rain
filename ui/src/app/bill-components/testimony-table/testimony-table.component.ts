@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import 'flowbite';
 
 export interface TableRow {
   date: string;
