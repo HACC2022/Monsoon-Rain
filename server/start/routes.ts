@@ -36,6 +36,9 @@ Route.post('bills/testimonies/assign/users/:id', 'BillsController.postAssignUser
 Route.post('bills/testimonies/assign/offices.:id', 'BillsController.postAssignOffices')
 Route.post('bills/testimonies/:id', 'BillsController.postAssignTestimony')
 
+/** Offices */
+Route.get('offices', 'OfficesController.index')
+
 Route.get('/', async () => {
   return { hello: 'world' }
 })
