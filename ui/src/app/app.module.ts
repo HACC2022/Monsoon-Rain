@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,8 @@ import { ApprovalModifyComponent } from './approval-modify/approval-modify.compo
 import { ApprovalClearComponent } from './approval-clear/approval-clear.component';
 import { ApprovalMakePdfComponent } from './approval-make-pdf/approval-make-pdf.component';
 import { ApprovalStageComponent } from './approval-stage/approval-stage.component';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { RegisterComponent } from './auth/pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,8 @@ import { ApprovalStageComponent } from './approval-stage/approval-stage.componen
     ApprovalClearComponent,
     ApprovalMakePdfComponent,
     ApprovalStageComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +78,7 @@ import { ApprovalStageComponent } from './approval-stage/approval-stage.componen
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [AssignService],
   bootstrap: [AppComponent],

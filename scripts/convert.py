@@ -5,7 +5,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # Enter password
-postgres_password = ""
+postgres_password = "Ywd9g5fd"
 conn_string = f'postgresql://postgres:{postgres_password}@localhost:5432/lts'
 
 conn = sqlite3.connect('legtrack.db')

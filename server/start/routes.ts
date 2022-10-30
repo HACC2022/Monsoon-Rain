@@ -20,6 +20,25 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+/** Auth */
+Route.post('register', 'AuthController.register')
+Route.post('login', 'AuthController.login')
+Route.get('logout', 'AuthController.logout')
+
+/** Bill */
+Route.get('bills', 'BillsController.getAllBills')
+Route.get('bills/:id', 'BillsController.getBillById')
+Route.get('bills/testimonies/:id', 'BillsController.getAllTestimonyForBillById')
+Route.post('bills/comment/:id', 'BillsController.postComment')
+Route.post('bills/testimony/:id', 'BillsController.postTestimony')
+Route.post('bills/testimony/approval/:id', 'BillsController.postApproval')
+Route.post('bills/testimonies/assign/users/:id', 'BillsController.postAssignUsers')
+Route.post('bills/testimonies/assign/offices.:id', 'BillsController.postAssignOffices')
+Route.post('bills/testimonies/:id', 'BillsController.postAssignTestimony')
+
+/** Offices */
+Route.get('offices', 'OfficesController.index')
+
 Route.get('/', async () => {
   return { hello: 'world' }
 })

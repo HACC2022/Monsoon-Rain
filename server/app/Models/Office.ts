@@ -8,6 +8,9 @@ export default class Office extends BaseModel {
   @column()
   public name: string
 
+  @column()
+  public abbreviation: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

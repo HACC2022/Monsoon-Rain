@@ -15,7 +15,10 @@ export default class User extends BaseModel {
 
   @column()
   public email: string
-  
+
+  @column()
+  public password: string
+
   @belongsTo(() => Position)
   public position_id: BelongsTo<typeof Position>
 
