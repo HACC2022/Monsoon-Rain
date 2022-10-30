@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataPresetsService } from 'src/app/data-presets.service';
 
 @Component({
   selector: 'app-bill-filter',
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class BillFilterComponent implements OnInit {
   offices: Set<string> = new Set<string>();
 
-  constructor() {}
+  constructor(private dataPresetsService: DataPresetsService) {}
+
+  getOffices() {
+    return this.dataPresetsService.getOffices();
+  }
 
   assignOffice(event: Event) {
     const target = event.target as HTMLSelectElement;

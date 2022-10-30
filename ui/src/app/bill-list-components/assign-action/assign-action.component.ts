@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AssignService } from 'src/app/assign.service';
+import { DataPresetsService } from 'src/app/data-presets.service';
 
 @Component({
   selector: 'app-assign-action',
@@ -6,14 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assign-action.component.scss'],
 })
 export class AssignActionComponent implements OnInit {
-  enabled = false;
-  assignedUsers: Set<string> = new Set<string>();
-  assignedOffices: Set<string> = new Set<string>();
-
-  constructor() {}
+  constructor(
+    private assignService: AssignService,
+    private dataPresetsService: DataPresetsService
+  ) {}
 
   swapEnable() {
-    this.enabled = !this.enabled;
+    this.assignService.swapEnable();
+  }
+
+  getEnabled() {
+    return this.assignService.enabled;
+  }
+
+  getNumberSelectedBills() {
+    return this.assignService.numberBillsSelected();
+  }
+
+  getOffices() {
+    return this.dataPresetsService.getOffices();
+  }
+
+  getUsers() {
+    return this.dataPresetsService.getUsers();
   }
 
   assignUser(event: Event) {
@@ -21,7 +38,7 @@ export class AssignActionComponent implements OnInit {
     const { selectedOptions } = target;
 
     for (let i = 0; i < selectedOptions.length; i++) {
-      this.assignedUsers.add(selectedOptions[i].value);
+      this.assignService.assignUser(selectedOptions[i].value);
     }
   }
 
@@ -30,18 +47,13 @@ export class AssignActionComponent implements OnInit {
     const { selectedOptions } = target;
 
     for (let i = 0; i < selectedOptions.length; i++) {
-      this.assignedOffices.add(selectedOptions[i].value);
+      this.assignService.assignOffice(selectedOptions[i].value);
     }
   }
 
   // Update API
   assign() {
-    if (this.assignedUsers.size > 0) {
-      console.log(this.assignedUsers);
-    }
-    if (this.assignedOffices.size > 0) {
-      console.log(this.assignedOffices);
-    }
+    this.assignService.assign();
   }
 
   ngOnInit(): void {}

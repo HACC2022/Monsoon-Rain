@@ -22,6 +22,7 @@ import { BillFetchActionComponent } from './bill-list-components/bill-fetch-acti
 import { ToastComponent } from './toast/toast.component';
 import { BillUpdateIntervalComponent } from './bill-list-components/bill-update-interval/bill-update-interval.component';
 import { TestimonyComponent } from './testimony/testimony.component';
+import { AssignService } from './assign.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { TestimonyComponent } from './testimony/testimony.component';
     TestimonyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  providers: [AssignService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

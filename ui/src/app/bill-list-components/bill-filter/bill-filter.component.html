@@ -12,8 +12,12 @@
       id="countries_multiple"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
     >
-      <option value="US">OSSS</option>
-      <option value="CA">GA</option>
+      <option
+        *ngFor="let office of getOffices() | keyvalue"
+        [value]="office.value"
+      >
+        {{ office.value }}
+      </option>
     </select>
   </div>
 

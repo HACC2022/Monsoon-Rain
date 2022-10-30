@@ -7,8 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BillUpdateIntervalComponent implements OnInit {
   @Input() interval?: number;
+  formSuccess = false;
 
   constructor() {}
+
+  setInterval() {
+    this.formSuccess = true;
+  }
 
   ngOnInit(): void {}
 }

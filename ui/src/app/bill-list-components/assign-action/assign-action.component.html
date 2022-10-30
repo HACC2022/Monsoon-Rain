@@ -1,8 +1,8 @@
 <div
   [ngClass]="{
-    'bg-blue-600': enabled,
-    'rounded-lg': enabled,
-    'p-5': enabled
+    'bg-blue-600': getEnabled(),
+    'rounded-lg': getEnabled(),
+    'p-5': getEnabled()
   }"
   class="transition-all duration-1000 mb-3"
 >
@@ -10,10 +10,10 @@
     <div
       (click)="swapEnable()"
       [ngClass]="{
-        'text-white': enabled,
-        'hover:text-blue-500': !enabled,
-        'text-gray-700': !enabled,
-        'font-bold': enabled
+        'text-white': getEnabled(),
+        'hover:text-blue-500': !getEnabled(),
+        'text-gray-700': !getEnabled(),
+        'font-bold': getEnabled()
       }"
       class="flex cursor-pointer transition-all duration-100"
       id="dropdownDefault"
@@ -37,12 +37,14 @@
       Assign Offices & Users
     </div>
   </div>
-  <div *ngIf="enabled">
+  <div *ngIf="getEnabled()">
     <p class="text-sm text-gray-100 pb-3 pt-2">
       Click on bills that you want the selected offices and/or users to be
       assigned to.
     </p>
-    <p class="text-sm pb-3 font-bold text-white">Selected 0 bills</p>
+    <p class="text-sm pb-3 font-bold text-white">
+      Selected {{ getNumberSelectedBills() }} bills
+    </p>
 
     <label
       for="countries_multiple"
@@ -55,8 +57,9 @@
       id="countries_multiple"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3"
     >
-      <option value="OSSS">OSSS</option>
-      <option value="GA">GA</option>
+      <option *ngFor="let user of getUsers() | keyvalue" [value]="user.value">
+        {{ user.value }}
+      </option>
     </select>
     <label
       for="countries_multiple"
@@ -69,8 +72,12 @@
       id="countries_multiple"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
     >
-      <option value="US">OSSS</option>
-      <option value="CA">GA</option>
+      <option
+        *ngFor="let office of getOffices() | keyvalue"
+        [value]="office.value"
+      >
+        {{ office.value }}
+      </option>
     </select>
     <div class="text-right mt-3">
       <button
