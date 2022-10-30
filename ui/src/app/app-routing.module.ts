@@ -7,7 +7,7 @@ import { TestimonyComponent } from './testimony/testimony.component';
 const routes: Routes = [
   { path: '', component: BillsComponent },
   { path: 'bill/:id', component: BillComponent },
-  { path: 'testimony', component: TestimonyComponent },
+  { path: 'bill/:id/testimony/:tid', component: TestimonyComponent },
 ];
 
 @NgModule({
