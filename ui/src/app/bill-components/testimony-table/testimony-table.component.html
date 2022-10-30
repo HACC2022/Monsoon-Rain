@@ -2,8 +2,9 @@
   <div class="rounded-t px-5 py-4 bg-gray-50 border-b">
     <div class="flex justify-between content-center">
       <div class="text-lg font-bold">Testimony for HB 1078</div>
-      <div
+      <a
         class="cursor-pointer underline decoration-2 underline-offset-4 hover:text-green-600 transition-colors duration-100"
+        [routerLink]="['testimony', 1]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +12,7 @@
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="w-5 h-5 float-left pr-1"
+          class="w-5 h-5 float-left mr-1 mt-0.5"
         >
           <path
             stroke-linecap="round"
@@ -20,7 +21,7 @@
           />
         </svg>
         <span class="text-sm">Add Testimony</span>
-      </div>
+      </a>
     </div>
     <div class="mt-5">
       <span class="-mr-2">
@@ -42,10 +43,15 @@
         <th scope="col" class="py-3 px-6">Status</th>
         <th scope="col" class="py-3 px-6">Creator</th>
         <th scope="col" class="py-3 px-6">Testimony</th>
+        <th scope="col" class="py-3 px-6">Same</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of rows" class="bg-white border-b">
+      <tr
+        *ngFor="let row of rows"
+        class="bg-white hover:bg-gray-100 cursor-pointer"
+        [routerLink]="['testimony', 1]"
+      >
         <th
           scope="row"
           class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
@@ -60,6 +66,27 @@
         </td>
         <td class="py-4 px-6">
           {{ row.testimony }}
+        </td>
+        <td class="py-4 px-6">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+        </td>
+      </tr>
+      <tr class="bg-white border-b">
+        <td colspan="5" class="py-4 px-16 w-full">
+          <app-approval-timeline></app-approval-timeline>
         </td>
       </tr>
     </tbody>

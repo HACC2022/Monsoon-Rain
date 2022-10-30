@@ -1,0 +1,62 @@
+<form [formGroup]="testimonyForm" (ngSubmit)="submitTestimony()" class="pb-10">
+  <div class="text-sm text-gray-500 uppercase pb-3">Department's Position</div>
+  <div class="flex pb-3">
+    <div class="flex items-center mr-4">
+      <input
+        id="inline-radio"
+        type="radio"
+        value="support"
+        name="position"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+        formControlName="position"
+      />
+      <label for="inline-radio" class="ml-2 text-sm font-medium text-gray-900"
+        >Support</label
+      >
+    </div>
+    <div class="flex items-center mr-4">
+      <input
+        id="inline-2-radio"
+        type="radio"
+        value="oppose"
+        name="position"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+        formControlName="position"
+      />
+      <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900"
+        >Oppose</label
+      >
+    </div>
+
+    <div class="flex items-center mr-4">
+      <input
+        id="inline-checked-radio"
+        type="radio"
+        value="comments"
+        name="position"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+        formControlName="position"
+      />
+      <label
+        for="inline-checked-radio"
+        class="ml-2 text-sm font-medium text-gray-900"
+        >Comments</label
+      >
+    </div>
+  </div>
+  <textarea
+    id="message"
+    rows="4"
+    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+    placeholder="Your message..."
+    formControlName="testimony"
+  ></textarea>
+  <div class="text-right pt-3">
+    <button
+      type="submit"
+      class="py-2 px-4 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+    >
+      Save Testimony
+    </button>
+  </div>
+</form>
