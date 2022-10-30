@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AssignService } from 'src/app/assign.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { AssignService } from 'src/app/assign.service';
 export class BillCardComponent implements OnInit {
   @Input() id!: string;
 
-  constructor(private assignService: AssignService) {}
+  constructor(private assignService: AssignService, private router: Router) {}
+
+  isAssignMode() {
+    return this.assignService.enabled;
+  }
 
   getIsSelected() {
     return this.assignService.isBillSelected(this.id);
@@ -17,12 +22,13 @@ export class BillCardComponent implements OnInit {
 
   selectBill(event: Event) {
     if (this.assignService.enabled) {
-      event.preventDefault();
       if (!this.getIsSelected()) {
         this.assignService.selectBill(this.id);
       } else {
         this.assignService.deselectBill(this.id);
       }
+    } else {
+      this.router.navigate(['bill', this.id]);
     }
   }
 

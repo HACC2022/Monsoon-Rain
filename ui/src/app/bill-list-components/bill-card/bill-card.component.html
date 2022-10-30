@@ -1,11 +1,10 @@
-<a
+<div
   [ngClass]="{
-    'border-blue-500': getIsSelected(),
-    'border-4': getIsSelected()
+    'border-blue-500': isAssignMode() && getIsSelected(),
+    'border-4': isAssignMode() && getIsSelected()
   }"
   (click)="selectBill($event)"
-  [routerLink]="['bill', id]"
-  class="block border border-gray-200 shadow p-8 rounded hover:-translate-y-1 transition-all duration-200 border-blue-500 border-4"
+  class="block border border-gray-200 shadow p-8 rounded hover:-translate-y-1 transition-all duration-200 border-blue-500 border-4 cursor-pointer"
 >
   <div class="pb-5">
     <span class="font-bold text-2xl pr-5"> HB 324</span>
@@ -65,4 +64,4 @@
       <app-pill>OSIP</app-pill>
     </div>
   </div>
-</a>
+</div>

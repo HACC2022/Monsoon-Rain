@@ -19,10 +19,14 @@ import { BillFilterComponent } from './bill-list-components/bill-filter/bill-fil
 import { BillActionsComponent } from './bill-list-components/bill-actions/bill-actions.component';
 import { AssignActionComponent } from './bill-list-components/assign-action/assign-action.component';
 import { BillFetchActionComponent } from './bill-list-components/bill-fetch-action/bill-fetch-action.component';
-import { ToastComponent } from './toast/toast.component';
 import { BillUpdateIntervalComponent } from './bill-list-components/bill-update-interval/bill-update-interval.component';
-import { TestimonyComponent } from './testimony/testimony.component';
+import { TestimonyComponent } from './testimony-components/testimony/testimony.component';
 import { AssignService } from './assign.service';
+import { TestimonyPositionComponent } from './testimony-components/testimony-position/testimony-position.component';
+import { TestimonyEditorComponent } from './testimony-components/testimony-editor/testimony-editor.component';
+import { TestimonyCommentComponent } from './testimony-components/testimony-comment/testimony-comment.component';
+import { TestimonyCommentsComponent } from './testimony-components/testimony-comments/testimony-comments.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,11 +47,14 @@ import { AssignService } from './assign.service';
     BillActionsComponent,
     AssignActionComponent,
     BillFetchActionComponent,
-    ToastComponent,
     BillUpdateIntervalComponent,
     TestimonyComponent,
+    TestimonyPositionComponent,
+    TestimonyEditorComponent,
+    TestimonyCommentComponent,
+    TestimonyCommentsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [AssignService],
   bootstrap: [AppComponent],
 })

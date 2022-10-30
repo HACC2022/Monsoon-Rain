@@ -1,0 +1,24 @@
+<div>
+  <div class="text-sm text-gray-500 uppercase">Comments</div>
+  <div class="py-3">
+    <app-testimony-comment></app-testimony-comment>
+    <form (submit)="submitComment($event)" action="">
+      <textarea
+        (change)="setComment($event)"
+        id="message"
+        rows="2"
+        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Your message..."
+        spellcheck="true"
+      ></textarea>
+      <div class="text-right pt-3">
+        <button
+          type="submit"
+          class="py-2 px-4 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+        >
+          Comment
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<app-bill-header
+  [code]="'HB 1078'"
+  [measureTitle]="'Elections; Chief Election Officer; Voter Information Guide'"
+  [reportTitle]="'Relating to the Hawaii School for the Deaf and Blind'"
+  [introducer]="'B. KOBAYASHI'"
+  [description]="
+    'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum'
+  "
+  [status]="'Introduced and Pass First Reading.'"
+  [offices]="['OSS', 'OSIP']"
+  [users]="['Joe Mama', 'Chase Papa']"
+>
+</app-bill-header>
+
+<div class="px-32 py-16">
+  <div class="mb-10">
+    <a
+      class="flex text-gray-800 hover:text-blue-500 transition-all duration-200"
+      [routerLink]="['../../']"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-5 h-5 text-gray-500 mr-3"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+        />
+      </svg>
+      Back to bill
+    </a>
+  </div>
+  <div class="mb-10">
+    <app-approval-timeline></app-approval-timeline>
+  </div>
+  <app-testimony-position></app-testimony-position>
+  <app-testimony-comments></app-testimony-comments>
+</div>
