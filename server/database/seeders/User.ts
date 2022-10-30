@@ -26,5 +26,18 @@ export default class extends BaseSeeder {
         password: 'password',
       },
     ])
+
+    await User.query().where('user_id', 1).update({
+      position_id: 1,
+      office_id: 1,
+    })
+    await User.query().where('user_id', 2).update({
+      position_id: 2,
+      office_id: 2,
+    })
+    await User.query().where('user_id', 3).update({
+      position_id: 3,
+      office_id: 3,
+    })
   }
 }

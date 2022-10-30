@@ -10,7 +10,11 @@ export default class extends BaseSeeder {
       },
       {
         position_id: 2,
-        name: 'Tracker',
+        name: 'Tech Writer',
+      },
+      {
+        position_id: 3,
+        name: 'Secretary',
       },
     ])
   }
