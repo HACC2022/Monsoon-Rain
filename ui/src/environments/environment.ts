@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseURL: 'http://0.0.0.0:3333',
+  apiBaseURL: 'https://late-sites-count-24-251-86-148.loca.lt/',
 };
 
 /*
