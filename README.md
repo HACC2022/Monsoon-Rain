@@ -30,12 +30,6 @@ npm i
 npm start
 ```
 
-In the `.env` file, enter in your PostgreSQL credentials in the `PG_USER` and `PG_PASSWORD` entries.
-
-Migrate the database using
-
-```node ace node ace migration:run```
-
 ### UI
 
 ```
