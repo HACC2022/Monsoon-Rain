@@ -25,8 +25,8 @@ export class BillComponent implements OnInit {
   lastUpdated?: string;
   companionBill?: string;
   currentReferrer?: string;
-  offices: string[] = [''];
-  users: string[] = [''];
+  offices: string[] = [];
+  users: string[] = [];
   videos?: IconDataDisplay[];
   reports?: IconDataDisplay[];
   versions?: IconDataDisplay[];

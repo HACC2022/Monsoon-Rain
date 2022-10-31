@@ -109,15 +109,23 @@ export default class BillsController {
 
   public async postTestimony({ request, response }: HttpContextContract) {
     try {
-      const user = request.input('user')
-      const bill_id = request.input('bill_id')
+      const userId = request.input('user')
+      const billId = request.input('billId')
 
-      const testimony = new Testimony()
-      testimony.users_prepared_by = user
-      testimony.bill_id = bill_id
+      const bill = await Bill.findOrFail(billId)
+      const user = await User.findOrFail(userId)
+      const testimony = await Testimony.create({})
+      testimony.users_prepared_by = userId
+      testimony.bill_id = billId
+      await testimony.related('bill_id').associate(bill)
+      await testimony.related('users_prepared_by').associate(user)
       await testimony.save()
 
-      return response.created({ status: true, data: testimony, message: 'Testimony created' })
+      return response.created({
+        status: true,
+        id: testimony.testimony_id,
+        message: 'Testimony created',
+      })
     } catch (error) {
       console.log(error.message)
       return response.badRequest({ status: false, message: 'Could not post testimony' })
