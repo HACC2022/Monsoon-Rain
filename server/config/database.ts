@@ -21,6 +21,18 @@ const databaseConfig: DatabaseConfig = {
       },
       healthCheck: false,
       debug: false,
+    },
+    sqlite: {
+      client: 'sqlite',
+      connection: {
+        filename: './db.sqlite3',
+      },
+      migrations: {
+        naturalSort: true,
+      },
+      useNullAsDefault: true,
+      healthCheck: false,
+      debug: false,
       seeders: {
         paths: ['./database/seeders/MainSeeder'],
       },
