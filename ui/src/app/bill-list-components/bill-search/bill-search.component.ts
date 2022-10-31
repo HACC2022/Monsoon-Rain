@@ -20,7 +20,11 @@ export class BillSearchComponent implements OnInit {
 
   search(event: Event) {
     event.preventDefault();
-    console.log(this.searchValue);
+    if (this.searchValue !== '') {
+      this.searchService.search(this.searchValue);
+    } else {
+      this.searchService.search('null');
+    }
   }
 
   sortBy(event: Event) {

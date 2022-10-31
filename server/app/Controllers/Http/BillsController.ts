@@ -6,10 +6,13 @@ import Comment from 'App/Models/Comment'
 import ForceUpdate from 'App/Models/ForceUpdate'
 import Testimony from 'App/Models/Testimony'
 import User from 'App/Models/User'
+import cron from 'node-cron'
+// import exec from 'child_process'
 
 export default class BillsController {
   public async forceUpdateBills({ response }: HttpContextContract) {
-    // Run scraper
+    // exec('python3 ../../../../../../scripts/scrape.py', () => {})
+
     await ForceUpdate.query().where('id', 1).update({
       updatedAt: new Date().toISOString(),
     })
@@ -42,6 +45,10 @@ export default class BillsController {
         interval,
       })
 
+      cron.schedule(`* ${interval} * * *`, () => {
+        // exec('python3 ../../../../../../scripts/scrape.py', () => {})
+      })
+
       return response.ok({ status: true, interval })
     } catch (error) {
       console.log(error.message)
@@ -51,7 +58,7 @@ export default class BillsController {
 
   public async getAllBills({ response }: HttpContextContract) {
     try {
-      const bills = await Database.from('bills').limit(10)
+      const bills = await Database.from('bills').limit(20)
       return response.ok({ status: true, data: bills, message: 'all bills returned' })
     } catch (error) {
       console.log(error.message)
@@ -63,6 +70,43 @@ export default class BillsController {
     try {
       const id = request.param('id')
       const bill = await Bill.find(id)
+      return response.ok({ status: true, data: bill, message: 'Bill returned' })
+    } catch (error) {
+      console.log(error.message)
+      return response.badRequest({ status: false, message: 'Could not find bill by id' })
+    }
+  }
+
+  public async getBillByMeasureNumber({ request, response }: HttpContextContract) {
+    try {
+      const id = request.param('id')
+
+      let bill: Bill[]
+
+      if (id !== 'null') {
+        bill = await Bill.query().where('measure_number', Number(id))
+      } else {
+        bill = await Database.from('bills').limit(20)
+      }
+
+      return response.ok({ status: true, data: bill, message: 'Bill returned' })
+    } catch (error) {
+      console.log(error.message)
+      return response.badRequest({ status: false, message: 'Could not find bill by id' })
+    }
+  }
+
+  public async sortBills({ request, response }: HttpContextContract) {
+    try {
+      const type = request.param('type')
+      let bill: Bill[]
+
+      if (type !== 'null') {
+        bill = await await Bill.query().orderBy(type, 'asc').limit(20)
+      } else {
+        bill = await Database.from('bills').limit(20)
+      }
+
       return response.ok({ status: true, data: bill, message: 'Bill returned' })
     } catch (error) {
       console.log(error.message)

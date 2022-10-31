@@ -28,6 +28,8 @@ Route.get('logout', 'AuthController.logout')
 /** Bill */
 Route.get('bills', 'BillsController.getAllBills')
 Route.get('bills/:id', 'BillsController.getBillById')
+Route.get('bills/measure/:id', 'BillsController.getBillByMeasureNumber')
+Route.get('bills/search/:type', 'BillsController.sortBills')
 Route.get('bills/testimonies/:id', 'BillsController.getAllTestimonyForBillById')
 Route.post('bills/comment/:id', 'BillsController.postComment')
 Route.post('bills/testimony', 'BillsController.postTestimony')

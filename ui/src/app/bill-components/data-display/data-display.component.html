@@ -1,7 +1,9 @@
 <div class="text-sm text-gray-500 uppercase pb-1">
-	{{ label }}
+  {{ label }}
 </div>
 
-<div>
-	{{ data }}
+<div *ngIf="data !== ''; else elseBlock">
+  {{ data }}
 </div>
+
+<ng-template #elseBlock>-</ng-template>

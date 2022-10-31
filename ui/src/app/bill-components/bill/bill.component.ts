@@ -45,7 +45,7 @@ export class BillComponent implements OnInit {
           this.description = data.description;
           this.status = data.status;
           this.action = data.action;
-          this.lastUpdated = data.last_updated;
+          this.lastUpdated = dayjs.unix(data.last_updated).toString();
           this.companionBill = data.companion_bill;
           this.currentReferrer = data.committee_referral;
 

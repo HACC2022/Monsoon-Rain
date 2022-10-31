@@ -17,9 +17,21 @@ export class SearchService {
       });
   }
 
-  search() {}
+  search(measureNumber: string) {
+    this.http
+      .get(`${environment.apiBaseURL}/bills/measure/${measureNumber}`)
+      .subscribe(({ data }: any) => {
+        console.log(data);
+        this.bills = data;
+      });
+  }
 
   sortBy(type: string) {
-    console.log(type);
+    this.http
+      .get(`${environment.apiBaseURL}/bills/search/${type}`)
+      .subscribe(({ data }: any) => {
+        console.log(data);
+        this.bills = data;
+      });
   }
 }
