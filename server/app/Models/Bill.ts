@@ -23,7 +23,7 @@ export default class Bill extends BaseModel {
   public description: string
 
   @column()
-  public legislation_type: string
+  public measure_type: string
 
   @column()
   public committee_referral: string
@@ -41,22 +41,22 @@ export default class Bill extends BaseModel {
   public committee_reports: string
 
   @column()
-  public youtube: string
+  public hearing: string
 
   @column()
-  public last_status_text: string
+  public companion_bill: string
 
   @column()
-  public act: string
+  public last_updated: string
 
   @column()
-  public hearing_date: string
+  public measure_number: string
 
   @column()
-  public hearing_location: string
+  public year: string
 
   @column()
-  public committee: string
+  public code: string
 
   @manyToMany(() => User)
   public users: ManyToMany<typeof User>
