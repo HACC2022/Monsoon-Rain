@@ -3,7 +3,7 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 export default class extends BaseSchema {
   protected tableName = 'bills'
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('bill_id')
 
@@ -26,6 +26,7 @@ export default class extends BaseSchema {
       table.text('status', 'longtext')
 
       table.text('all_versions', 'longtext')
+      table.text('youtube', 'longtext')
 
       table.text('committee_reports', 'longtext')
 
@@ -51,7 +52,7 @@ export default class extends BaseSchema {
     })
   }
 
-  public async down () {
+  public async down() {
     this.schema.dropTable(this.tableName)
   }
 }

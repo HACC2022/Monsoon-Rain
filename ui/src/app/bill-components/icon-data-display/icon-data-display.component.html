@@ -8,11 +8,13 @@
     </div>
 
     <div>
-      <div *ngFor="let d of data">
+      <div class="py-1" *ngFor="let d of data">
         <a
           class="flex underline decoration-2 underline-offset-4 hover:text-blue-500 transition-all duration-200"
           *ngIf="d.url; else elseBlock"
-          href="d.url"
+          [href]="'https://' + d.url"
+          rel="”noopener”"
+          target="_blank"
           ><span class="pr-2">{{ d.data }}</span
           ><svg
             xmlns="http://www.w3.org/2000/svg"

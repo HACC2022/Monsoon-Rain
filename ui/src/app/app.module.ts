@@ -37,6 +37,7 @@ import { ApprovalMakePdfComponent } from './approval-make-pdf/approval-make-pdf.
 import { ApprovalStageComponent } from './approval-stage/approval-stage.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
+import { DateListComponent } from './date-list/date-list.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { RegisterComponent } from './auth/pages/register/register.component';
     ApprovalStageComponent,
     LoginComponent,
     RegisterComponent,
+    DateListComponent,
   ],
   imports: [
     BrowserModule,

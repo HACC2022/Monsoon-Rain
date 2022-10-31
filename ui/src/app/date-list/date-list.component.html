@@ -1,0 +1,24 @@
+<div class="flex gap-4">
+  <div>
+    <ng-content></ng-content>
+  </div>
+  <div>
+    <div class="text-sm text-gray-500 uppercase pb-3">
+      {{ label }}
+    </div>
+
+    <div class="my-3" *ngFor="let d of data">
+      <a
+        class="flex underline decoration-2 underline-offset-4 hover:text-blue-500 transition-all duration-200"
+        [href]="'https://' + d.url"
+        rel="”noopener”"
+        target="_blank"
+      >
+        <div>
+          <div>{{ d.date }}</div>
+          <div class="pr-2">{{ d.location }}</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
