@@ -2,13 +2,55 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Approval from 'App/Models/Approval'
 import Bill from 'App/Models/Bill'
 import Comment from 'App/Models/Comment'
+import ForceUpdate from 'App/Models/ForceUpdate'
 import Testimony from 'App/Models/Testimony'
 
 export default class BillsController {
+  public async forceUpdateBills({ response }: HttpContextContract) {
+    // Run scraper
+    await ForceUpdate.query().where('id', 1).update({
+      updatedAt: new Date().toISOString(),
+    })
+    console.log(Date.now())
+    return response.ok({ status: true })
+  }
+
+  public async getBillFetchInterval({ request, response }: HttpContextContract) {
+    try {
+      const interval = await ForceUpdate.find(1)
+
+      return response.ok({
+        status: true,
+        interval: interval?.interval,
+        lastUpdated: interval?.updatedAt,
+      })
+    } catch (error) {
+      console.log(error.message)
+      return response.badRequest({ status: false, message: 'Could not update interval' })
+    }
+  }
+
+  public async updateBillFetchInterval({ request, response }: HttpContextContract) {
+    try {
+      const { interval } = request.body()
+
+      console.log(request.body())
+
+      await ForceUpdate.query().where('id', 1).update({
+        interval,
+      })
+
+      return response.ok({ status: true, interval })
+    } catch (error) {
+      console.log(error.message)
+      return response.badRequest({ status: false, message: 'Could not update interval' })
+    }
+  }
+
   public async getAllBills({ response }: HttpContextContract) {
     try {
       const bills = await Bill.all()
-      return response.ok({ status: true, data: bills, message: 'All bills returned' })
+      return response.ok({ status: true, data: bills, message: 'all bills returned' })
     } catch (error) {
       console.log(error.message)
       return response.badRequest({ status: false, message: 'Could not get all bills' })

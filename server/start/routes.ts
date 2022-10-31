@@ -35,9 +35,15 @@ Route.post('bills/testimony/approval/:id', 'BillsController.postApproval')
 Route.post('bills/testimonies/assign/users/:id', 'BillsController.postAssignUsers')
 Route.post('bills/testimonies/assign/offices.:id', 'BillsController.postAssignOffices')
 Route.post('bills/testimonies/:id', 'BillsController.postAssignTestimony')
+Route.get('bill/interval', 'BillsController.getBillFetchInterval')
+Route.patch('bill/interval', 'BillsController.updateBillFetchInterval')
+Route.get('bill/force', 'BillsController.forceUpdateBills')
 
 /** Offices */
 Route.get('offices', 'OfficesController.index')
+
+/** Users */
+Route.get('users', 'UsersController.index')
 
 Route.get('/', async () => {
   return { hello: 'world' }

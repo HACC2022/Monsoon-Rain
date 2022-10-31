@@ -1,10 +1,15 @@
-<div class="flex col-span-3 mt-6">
+<label class="mt-6 mb-2 block text-sm font-medium text-gray-500"
+  >Bill update interval (hours)</label
+>
+<div class="flex col-span-3">
   <div class="relative w-full">
     <input
+      (change)="updateInterval($event)"
       type="number"
       class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-      placeholder="Bill update interval (minutes)"
+      placeholder="Bill update interval (hours)"
       required
+      [value]="getInterval()"
     />
     <button
       (click)="setInterval()"
