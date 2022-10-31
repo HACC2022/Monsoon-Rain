@@ -6,7 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./bill-header.component.scss'],
 })
 export class BillHeaderComponent implements OnInit {
-  @Input() code?: string;
+  @Input() measureType?: string;
+  @Input() measureNumber?: string;
   @Input() measureTitle?: string;
   @Input() reportTitle?: string;
   @Input() introducer?: string;
@@ -15,8 +16,7 @@ export class BillHeaderComponent implements OnInit {
   @Input() offices?: string[];
   @Input() users?: string[];
 
-  constructor() // assignedUsers?: string[] // assignedOffices?: string[], // status?: string, // introducer?: string, // reportTitle: string, // measureTitle: string, // code: string,
-  {
+  constructor() { // assignedUsers?: string[] // assignedOffices?: string[], // status?: string, // introducer?: string, // reportTitle: string, // measureTitle: string, // code: string,
     // this.code = code;
     // this.measureTitle = measureTitle;
     // this.reportTitle = reportTitle;

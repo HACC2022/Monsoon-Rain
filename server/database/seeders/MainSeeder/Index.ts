@@ -11,10 +11,10 @@ export default class extends BaseSeeder {
       return
     }
 
-    console.log('ran')
     await new Seeder.default(this.client).run()
   }
   public async run() {
+    await this.runSeeder(await import('../ForceUpdate'))
     await this.runSeeder(await import('../Office'))
     await this.runSeeder(await import('../Position'))
     await this.runSeeder(await import('../User'))

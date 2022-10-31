@@ -14,6 +14,7 @@ export interface TableRow {
 })
 export class TestimonyTableComponent implements OnInit {
   @Input() rows!: TableRow[];
+  @Input() assignees?: string[] = [];
 
   constructor() {}
 

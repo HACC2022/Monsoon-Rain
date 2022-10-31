@@ -42,7 +42,7 @@
           class="text-sm text-gray-500 font-medium"
           [ngClass]="{ 'text-gray-200': enabled }"
         >
-          Updated 5 minutes ago
+          Updated {{ getIntervalLastUpdated() }}
         </p>
       </div>
     </div>
