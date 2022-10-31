@@ -15,6 +15,12 @@ export interface DateTimes {
 export class DateListComponent implements OnInit {
   @Input() label!: string;
   @Input() data?: DateTimes[];
+
+  downloadCalendarInvite(blob: string) {
+    const b = new Blob([blob], { type: 'text/calendar' });
+    window.open(URL.createObjectURL(b));
+  }
+
   constructor() {}
 
   ngOnInit(): void {}

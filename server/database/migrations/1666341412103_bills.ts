@@ -5,7 +5,7 @@ export default class extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('bill_id')
+      table.increments('bill_id').primary()
 
       table.text('link', 'longtext')
 
@@ -29,8 +29,6 @@ export default class extends BaseSchema {
       table.text('youtube', 'longtext')
 
       table.text('committee_reports', 'longtext')
-
-      table.integer('office').references('office_id').inTable('offices')
 
       table.text('hearing', 'longtext')
 

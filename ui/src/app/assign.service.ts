@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,32 +6,32 @@ import { Injectable } from '@angular/core';
 })
 export class AssignService {
   public enabled = false;
-  private selectedBills: Set<string> = new Set<string>();
+  private selectedBills: Set<number> = new Set<number>();
 
-  private assignedUsers: Set<string> = new Set<string>();
-  private assignedOffices: Set<string> = new Set<string>();
+  private assignedUsers: Set<number> = new Set<number>();
+  private assignedOffices: Set<number> = new Set<number>();
 
   swapEnable() {
     this.enabled = !this.enabled;
   }
 
-  assignUser(user: string) {
+  assignUser(user: number) {
     this.assignedUsers.add(user);
   }
 
-  assignOffice(user: string) {
+  assignOffice(user: number) {
     this.assignedOffices.add(user);
   }
 
-  selectBill(bill: string) {
+  selectBill(bill: number) {
     this.selectedBills.add(bill);
   }
 
-  deselectBill(bill: string) {
+  deselectBill(bill: number) {
     this.selectedBills.delete(bill);
   }
 
-  isBillSelected(bill: string) {
+  isBillSelected(bill: number) {
     return this.selectedBills.has(bill);
   }
 
@@ -42,8 +43,10 @@ export class AssignService {
   assign() {
     this.selectedBills.forEach((bill) => {
       if (this.assignedUsers.size > 0) {
-        // iterate over users
-        console.log(this.assignedUsers);
+        this.http.post('/bills/testimonies/assign/users/', {
+          id: bill,
+          user: Array.from(this.assignedUsers),
+        });
       }
       if (this.assignedOffices.size > 0) {
         // iterate over offices
@@ -52,5 +55,5 @@ export class AssignService {
     });
   }
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 }

@@ -3,10 +3,11 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 export default class extends BaseSchema {
   protected tableName = 'comments'
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('comment_id')
 
+      table.integer('bill_id').references('bill_id').inTable('bills')
       table.integer('user_id').references('user_id').inTable('users')
 
       table.text('message', 'longtext')
@@ -18,7 +19,7 @@ export default class extends BaseSchema {
     })
   }
 
-  public async down () {
+  public async down() {
     this.schema.dropTable(this.tableName)
   }
 }

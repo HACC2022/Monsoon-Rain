@@ -57,7 +57,7 @@
       id="countries_multiple"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3"
     >
-      <option *ngFor="let user of getUsers() | keyvalue" [value]="user.value">
+      <option *ngFor="let user of getUsers() | keyvalue" [value]="user.key">
         {{ user.value }}
       </option>
     </select>
@@ -74,7 +74,7 @@
     >
       <option
         *ngFor="let office of getOffices() | keyvalue"
-        [value]="office.value"
+        [value]="office.key"
       >
         {{ office.value }}
       </option>

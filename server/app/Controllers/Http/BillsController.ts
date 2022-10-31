@@ -1,9 +1,11 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Database from '@ioc:Adonis/Lucid/Database'
 import Approval from 'App/Models/Approval'
 import Bill from 'App/Models/Bill'
 import Comment from 'App/Models/Comment'
 import ForceUpdate from 'App/Models/ForceUpdate'
 import Testimony from 'App/Models/Testimony'
+import User from 'App/Models/User'
 
 export default class BillsController {
   public async forceUpdateBills({ response }: HttpContextContract) {
@@ -49,7 +51,7 @@ export default class BillsController {
 
   public async getAllBills({ response }: HttpContextContract) {
     try {
-      const bills = await Bill.all()
+      const bills = await Database.from('bills').limit(10)
       return response.ok({ status: true, data: bills, message: 'all bills returned' })
     } catch (error) {
       console.log(error.message)
@@ -143,14 +145,20 @@ export default class BillsController {
 
   public async postAssignUsers({ request, response }: HttpContextContract) {
     try {
-      const user = request.param('user')
-      const id = request.param('bill_id')
+      const userId: number[] = request.input('user')
+      const id = request.input('id')
 
-      const updatedBill = await Bill.query().where('bill_id', id).update({ users: user })
+      console.log(userId, id)
+
+      const bill = await Bill.findOrFail(id)
+
+      await userId.map(async (id) => {
+        const user = await User.findOrFail(id)
+        await bill.related('users').attach([user.user_id])
+      })
 
       return response.ok({
         status: true,
-        data: updatedBill,
         message: 'Bill updated with new assigned users',
       })
     } catch (error) {
@@ -162,7 +170,7 @@ export default class BillsController {
   public async postAssignOffices({ request, response }: HttpContextContract) {
     try {
       const offices = request.param('offices')
-      const id = request.param('bill_id')
+      const id = request.param('id')
 
       const updatedBill = await Bill.query().where('bill_id', id).update({ offices: offices })
 

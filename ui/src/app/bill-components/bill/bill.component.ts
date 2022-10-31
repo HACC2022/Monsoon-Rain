@@ -92,7 +92,6 @@ export class BillComponent implements OnInit {
                 youtube: 'http://youtube.com',
               },
             ];
-            console.log('--');
           });
 
           this.hearings = hearings;

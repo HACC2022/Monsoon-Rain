@@ -16,8 +16,13 @@
       <app-bill-search></app-bill-search>
       <app-bill-card
         *ngFor="let bill of getBills()"
-        [id]="bill.id"
-        [billType]="bill.type"
+        [id]="bill.bill_id"
+        [billType]="bill.measure_type"
+        [billNumber]="bill.measure_number"
+        [measureTitle]="bill.measure_title"
+        [description]="bill.description"
+        [action]="'Monitor'"
+        [hearingDate]="'06/23/2023 6:00 PM'"
       ></app-bill-card>
     </div>
   </div>

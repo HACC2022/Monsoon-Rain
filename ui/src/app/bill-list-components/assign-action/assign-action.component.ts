@@ -37,17 +37,19 @@ export class AssignActionComponent implements OnInit {
     const target = event.target as HTMLSelectElement;
     const { selectedOptions } = target;
 
+    console.log(selectedOptions);
     for (let i = 0; i < selectedOptions.length; i++) {
-      this.assignService.assignUser(selectedOptions[i].value);
+      this.assignService.assignUser(Number(selectedOptions[i].value));
     }
   }
 
   assignOffice(event: Event) {
     const target = event.target as HTMLSelectElement;
     const { selectedOptions } = target;
+    console.log(selectedOptions);
 
     for (let i = 0; i < selectedOptions.length; i++) {
-      this.assignService.assignOffice(selectedOptions[i].value);
+      this.assignService.assignOffice(Number(selectedOptions[i].value));
     }
   }
 

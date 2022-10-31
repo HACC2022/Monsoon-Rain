@@ -9,8 +9,8 @@
 
     <div class="my-3" *ngFor="let d of data">
       <a
-        class="flex underline decoration-2 underline-offset-4 hover:text-blue-500 transition-all duration-200"
-        [href]="'https://' + d.url"
+        (click)="downloadCalendarInvite(d.url)"
+        class="flex underline decoration-2 underline-offset-4 hover:text-blue-500 transition-all duration-200 cursor-pointer"
         rel="”noopener”"
         target="_blank"
       >
