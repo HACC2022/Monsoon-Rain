@@ -23,7 +23,7 @@ export default class AuthController {
         const email = request.input('email')
         const password = request.input('password')
         try {
-            await auth.use('web').attempt(email, password)
+            await auth.use('basic').attempt(email, password)
             return response.ok({ status: true, message: 'Success' })
         } catch (error) {
             console.log(error.message)

@@ -17,11 +17,9 @@ export default class extends BaseSchema {
 
       table.text('description', 'longtext')
 
-      table.text('legislation_type', 'longtext')
+      table.text('measure_type', 'longtext')
 
       table.text('committee_referral', 'longtext')
-
-      table.integer('office').references('office_id').inTable('offices')
 
       table.text('action', 'longtext')
 
@@ -31,17 +29,19 @@ export default class extends BaseSchema {
 
       table.text('committee_reports', 'longtext')
 
-      table.text('youtube', 'longtext')
+      table.integer('office').references('office_id').inTable('offices')
 
-      table.text('last_status_text', 'longtext')
+      table.text('hearing', 'longtext')
 
-      table.text('act', 'longtext')
+      table.text('companion_bill', 'longtext')
 
-      table.text('hearing_date', 'longtext')
+      table.text('last_updated', 'longtext')
 
-      table.text('hearing_location', 'longtext')
+      table.text('measure_number', 'longtext')
 
-      table.text('committee', 'longtext')
+      table.text('year', 'longtext')
+
+      table.text('code', 'longtext')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
