@@ -27,13 +27,13 @@ Directories are with respect to root directory.
 ```
 cd server
 npm i
-npm start
+npm run dev
 ```
 
 ### UI
 
 ```
-cd ui
+cd ../ui
 npm i
 npm start
 ```
