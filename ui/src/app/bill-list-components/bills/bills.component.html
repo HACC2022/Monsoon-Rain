@@ -15,8 +15,9 @@
     <div class="flex flex-col gap-y-5">
       <app-bill-search></app-bill-search>
       <app-bill-card
-        *ngFor="let i of ['1', '2', '3', '4', '5', '6']"
-        [id]="i"
+        *ngFor="let bill of getBills()"
+        [id]="bill.id"
+        [billType]="bill.type"
       ></app-bill-card>
     </div>
   </div>

@@ -9,6 +9,13 @@ import { AssignService } from 'src/app/assign.service';
 })
 export class BillCardComponent implements OnInit {
   @Input() id!: string;
+  @Input() billType!: string;
+  @Input() billNumber!: string;
+  @Input() measureTitle!: string;
+  @Input() description!: string;
+  @Input() action!: string;
+  @Input() hearingDate!: Date;
+  @Input() offices!: any[];
 
   constructor(private assignService: AssignService, private router: Router) {}
 

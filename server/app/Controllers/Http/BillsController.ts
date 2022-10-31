@@ -11,11 +11,11 @@ export default class BillsController {
     await ForceUpdate.query().where('id', 1).update({
       updatedAt: new Date().toISOString(),
     })
-    console.log(Date.now())
+
     return response.ok({ status: true })
   }
 
-  public async getBillFetchInterval({ request, response }: HttpContextContract) {
+  public async getBillFetchInterval({ response }: HttpContextContract) {
     try {
       const interval = await ForceUpdate.find(1)
 

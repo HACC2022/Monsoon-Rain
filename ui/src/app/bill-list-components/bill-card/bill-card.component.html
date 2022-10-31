@@ -7,16 +7,13 @@
   class="block border border-gray-200 shadow p-8 rounded hover:-translate-y-1 transition-all duration-200 border-blue-500 border-4 cursor-pointer"
 >
   <div class="pb-5">
-    <span class="font-bold text-2xl pr-5"> HB 324</span>
-    <span class="text-2xl"> Relating to the School for the Deaf and Blind</span>
+    <span class="font-bold text-2xl pr-5">
+      {{ billType }} {{ billNumber }}</span
+    >
+    <span class="text-2xl">{{ measureTitle }}</span>
     <p class="text-sm text-gray-500"></p>
     <div class="text-gray-500 text-sm pt-2">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining ... Lorum ipsum am
-      dolor amasit
+      {{ description }}
     </div>
   </div>
   <div class="flex">
@@ -36,7 +33,7 @@
             d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
           />
         </svg>
-        Monitor
+        {{ action }}
       </span>
     </div>
     <div class="pr-5">
@@ -56,11 +53,13 @@
           />
         </svg>
 
-        06/23/2023
+        {{ hearingDate }}
       </span>
     </div>
     <div class="pt-1">
-      <app-pill class="pr-2">GA</app-pill>
+      <app-pill *ngFor="let office; in: offices" class="pr-2">{{
+        office
+      }}</app-pill>
       <app-pill>OSIP</app-pill>
     </div>
   </div>

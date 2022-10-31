@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DataDisplayComponent implements OnInit {
   @Input() label!: string;
-  @Input() data!: string;
+  @Input() data?: string;
 
   constructor() {}
 

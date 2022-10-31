@@ -13,7 +13,7 @@ export interface IconDataDisplay {
 export class IconDataDisplayComponent implements OnInit {
   @Input() icon?: string;
   @Input() label!: string;
-  @Input() data!: IconDataDisplay[];
+  @Input() data?: IconDataDisplay[];
 
   constructor() {}
 

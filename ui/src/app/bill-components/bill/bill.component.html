@@ -1,19 +1,25 @@
 <app-bill-header
-  [code]="'HB 1078'"
-  [measureTitle]="'Elections; Chief Election Officer; Voter Information Guide'"
-  [reportTitle]="'Relating to the Hawaii School for the Deaf and Blind'"
-  [introducer]="'B. KOBAYASHI'"
-  [description]="
-    'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum'
-  "
-  [status]="'Introduced and Pass First Reading.'"
-  [offices]="['OSS', 'OSIP']"
-  [users]="['Joe Mama', 'Chase Papa']"
+  [measureType]="measureType"
+  [measureNumber]="measureNumber"
+  [measureTitle]="measureTitle"
+  [reportTitle]="reportTitle"
+  [introducer]="introducer"
+  [description]="description"
+  [offices]="offices"
+  [users]="users"
 >
 </app-bill-header>
 
 <div class="px-16 md:px-32">
-  <app-bill-information></app-bill-information>
+  <app-bill-information
+    [measureType]="measureType"
+    [measureNumber]="measureNumber"
+    [status]="status"
+    [action]="action"
+    [lastUpdated]="lastUpdated"
+    [companionBill]="companionBill"
+    [currentReferrer]="currentReferrer"
+  ></app-bill-information>
 
   <app-testimony-table
     [rows]="[
