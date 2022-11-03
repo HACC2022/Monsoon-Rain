@@ -4,16 +4,20 @@ import Bill from './Bill'
 import User from './User'
 
 export default class Testimony extends BaseModel {
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, columnName: 'testimony_id' })
   public testimony_id: number
 
   @column.dateTime()
   public date: DateTime
 
-  @belongsTo(() => Bill)
+  @belongsTo(() => Bill, {
+    foreignKey: 'testimony_id',
+  })
   public bill_id: BelongsTo<typeof Bill>
 
-  @belongsTo(() => User)
+  @belongsTo(() => User, {
+    foreignKey: 'testimony_id',
+  })
   public users_prepared_by: BelongsTo<typeof User>
 
   // @column()

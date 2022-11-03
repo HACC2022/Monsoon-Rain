@@ -116,8 +116,11 @@ export default class BillsController {
 
   public async getAllTestimonyForBillById({ request, response }: HttpContextContract) {
     try {
-      const bill_id = request.param('id')
-      const testimonies = await Testimony.findBy('bill_id', bill_id)
+      const billId = request.param('id')
+
+      const bill = await Bill.findOrFail(billId)
+
+      const testimonies = bill.related('testimonies').query()
       return response.ok({
         status: true,
         data: testimonies,
@@ -156,13 +159,15 @@ export default class BillsController {
       const userId = request.input('user')
       const billId = request.input('billId')
 
+      console.log(userId)
       const bill = await Bill.findOrFail(billId)
       const user = await User.findOrFail(userId)
       const testimony = await Testimony.create({})
-      testimony.users_prepared_by = userId
-      testimony.bill_id = billId
+      // testimony.users_prepared_by = userId
+      // testimony.bill_id = billId
       await testimony.related('bill_id').associate(bill)
       await testimony.related('users_prepared_by').associate(user)
+
       await testimony.save()
 
       return response.created({

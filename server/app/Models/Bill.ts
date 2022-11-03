@@ -1,10 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, hasMany, HasMany, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import Office from './Office'
 import User from './User'
+import Testimony from './Testimony'
 
 export default class Bill extends BaseModel {
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, columnName: 'bill_id' })
   public bill_id: number
 
   @column()
@@ -63,6 +64,11 @@ export default class Bill extends BaseModel {
 
   @manyToMany(() => Office)
   public offices: ManyToMany<typeof Office>
+
+  @hasMany(() => Testimony, {
+    foreignKey: 'bill_id',
+  })
+  public testimonies: HasMany<typeof Testimony>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
