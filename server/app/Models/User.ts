@@ -16,7 +16,7 @@ import Testimony from './Testimony'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
-  public user_id: number
+  public id: number
 
   @column()
   public first_name: string
@@ -31,17 +31,15 @@ export default class User extends BaseModel {
   public password: string
 
   @belongsTo(() => Position)
-  public position_id: BelongsTo<typeof Position>
+  public position: BelongsTo<typeof Position>
 
   @belongsTo(() => Office)
-  public office_id: BelongsTo<typeof Office>
+  public office: BelongsTo<typeof Office>
 
   @manyToMany(() => Bill)
   public bills: ManyToMany<typeof Bill>
 
-  @hasMany(() => Testimony, {
-    foreignKey: 'user_id',
-  })
+  @hasMany(() => Testimony)
   public testimonies: HasMany<typeof Testimony>
 
   @column.dateTime({ autoCreate: true })

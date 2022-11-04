@@ -5,13 +5,19 @@ import Bill from './Bill'
 
 export default class Comment extends BaseModel {
   @column({ isPrimary: true })
-  public comment_id: number
+  public id: number
+
+  @column()
+  public billId: number
+
+  @column()
+  public userId: number
 
   @belongsTo(() => User)
-  public user_id: BelongsTo<typeof User>
+  public user: BelongsTo<typeof User>
 
   @belongsTo(() => Bill)
-  public bill_id: BelongsTo<typeof Bill>
+  public bill: BelongsTo<typeof Bill>
 
   @column()
   public message: string

@@ -5,16 +5,20 @@ export default class extends BaseSeeder {
   public async run() {
     await Position.createMany([
       {
-        position_id: 1,
-        name: 'Superintendent',
+        id: 1,
+        name: 'Office',
       },
       {
-        position_id: 2,
-        name: 'Tech Writer',
+        id: 2,
+        name: 'PIPE',
       },
       {
-        position_id: 3,
+        id: 3,
         name: 'Secretary',
+      },
+      {
+        id: 4,
+        name: 'Superintendent',
       },
     ])
   }

@@ -1,9 +1,11 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
+import { Test } from '@japa/runner'
 import Approval from 'App/Models/Approval'
 import Bill from 'App/Models/Bill'
 import Comment from 'App/Models/Comment'
 import ForceUpdate from 'App/Models/ForceUpdate'
+import Office from 'App/Models/Office'
 import Testimony from 'App/Models/Testimony'
 import User from 'App/Models/User'
 import cron from 'node-cron'
@@ -120,7 +122,8 @@ export default class BillsController {
 
       const bill = await Bill.findOrFail(billId)
 
-      const testimonies = bill.related('testimonies').query()
+      const testimonies = await bill.related('testimonies').query()
+
       return response.ok({
         status: true,
         data: testimonies,
@@ -137,14 +140,20 @@ export default class BillsController {
 
   public async postComment({ request, response }: HttpContextContract) {
     try {
-      const user = request.input('user')
+      const userId = request.input('userId')
+      const billId = request.input('billId')
       const message = request.input('comment')
-      const bill_id = request.input('bill_id')
+
+      const user = await User.findOrFail(userId)
+      const bill = await Bill.findOrFail(billId)
 
       const comment = new Comment()
-      comment.user_id = user
+
       comment.message = message
-      comment.bill_id = bill_id
+
+      await comment.related('user').associate(user)
+      await comment.related('bill').associate(bill)
+
       await comment.save()
 
       return response.created({ status: true, data: comment, message: 'Comment created' })
@@ -159,20 +168,19 @@ export default class BillsController {
       const userId = request.input('userId')
       const billId = request.input('billId')
 
-      console.log(userId)
       const bill = await Bill.findOrFail(billId)
       const user = await User.findOrFail(userId)
-      const testimony = await Testimony.create({})
-      // testimony.users_prepared_by = userId
-      // testimony.bill_id = billId
-      await testimony.related('bill_id').associate(bill)
-      await testimony.related('users_prepared_by').associate(user)
+
+      const testimony = new Testimony()
+
+      await testimony.related('bill').associate(bill)
+      await testimony.related('user').associate(user)
 
       await testimony.save()
 
       return response.created({
         status: true,
-        id: testimony.testimony_id,
+        id: testimony.id,
         message: 'Testimony created',
       })
     } catch (error) {
@@ -183,14 +191,20 @@ export default class BillsController {
 
   public async postApproval({ request, response }: HttpContextContract) {
     try {
-      const user = request.input('user')
-      const bill_id = request.input('bill_id')
+      const userId = request.input('userId')
+      const billId = request.input('billId')
       const type = request.input('type')
 
+      const bill = await Bill.findOrFail(billId)
+      const user = await User.findOrFail(userId)
+
       const approval = new Approval()
-      approval.bill_id = bill_id
-      approval.approver = user
+
       approval.type = type
+
+      await approval.related('bill').associate(bill)
+      await approval.related('approver').associate(user)
+
       await approval.save()
 
       return response.created({ status: true, data: approval, message: 'Approval created' })
@@ -202,16 +216,14 @@ export default class BillsController {
 
   public async postAssignUsers({ request, response }: HttpContextContract) {
     try {
-      const userId: number[] = request.input('user')
-      const id = request.input('id')
+      const userIds: number[] = request.input('user')
+      const billId = request.input('billId')
 
-      console.log(userId, id)
+      const bill = await Bill.findOrFail(billId)
 
-      const bill = await Bill.findOrFail(id)
-
-      await userId.map(async (id) => {
+      await userIds.map(async (id) => {
         const user = await User.findOrFail(id)
-        await bill.related('users').attach([user.user_id])
+        await bill.related('users').attach([user.id])
       })
 
       return response.ok({
@@ -226,14 +238,18 @@ export default class BillsController {
 
   public async postAssignOffices({ request, response }: HttpContextContract) {
     try {
-      const offices = request.param('offices')
-      const id = request.param('id')
+      const officeIds: number[] = request.input('offices')
+      const billId = request.input('billId')
 
-      const updatedBill = await Bill.query().where('bill_id', id).update({ offices: offices })
+      const bill = await Bill.findOrFail(billId)
+
+      await officeIds.map(async (id) => {
+        const office = await Office.findOrFail(id)
+        await bill.related('offices').attach([office.id])
+      })
 
       return response.ok({
         status: true,
-        data: updatedBill,
         message: 'Bill updated with new offices',
       })
     } catch (error) {

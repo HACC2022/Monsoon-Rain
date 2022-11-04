@@ -5,7 +5,7 @@ export default class extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('user_id').primary()
+      table.increments('id').primary()
 
       table.text('first_name', 'longtext')
 
@@ -15,9 +15,9 @@ export default class extends BaseSchema {
 
       table.text('password', 'longtext')
 
-      table.integer('position_id').references('position_id').inTable('positions')
+      table.integer('position_id').references('id').inTable('positions')
 
-      table.integer('office_id').references('office_id').inTable('offices')
+      table.integer('office_id').references('id').inTable('offices')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

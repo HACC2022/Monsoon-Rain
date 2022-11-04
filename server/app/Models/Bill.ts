@@ -5,8 +5,8 @@ import User from './User'
 import Testimony from './Testimony'
 
 export default class Bill extends BaseModel {
-  @column({ isPrimary: true, columnName: 'bill_id' })
-  public bill_id: number
+  @column({ isPrimary: true })
+  public id: number
 
   @column()
   public link: string
@@ -65,9 +65,7 @@ export default class Bill extends BaseModel {
   @manyToMany(() => Office)
   public offices: ManyToMany<typeof Office>
 
-  @hasMany(() => Testimony, {
-    foreignKey: 'bill_id',
-  })
+  @hasMany(() => Testimony)
   public testimonies: HasMany<typeof Testimony>
 
   @column.dateTime({ autoCreate: true })

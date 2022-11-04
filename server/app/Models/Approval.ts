@@ -5,10 +5,16 @@ import User from './User'
 
 export default class Approval extends BaseModel {
   @column({ isPrimary: true })
-  public approval_id: number
+  public id: number
+
+  @column()
+  public billId: number
+
+  @column()
+  public userId: number
 
   @belongsTo(() => Bill)
-  public bill_id: BelongsTo<typeof Bill>
+  public bill: BelongsTo<typeof Bill>
 
   @belongsTo(() => User)
   public approver: BelongsTo<typeof User>

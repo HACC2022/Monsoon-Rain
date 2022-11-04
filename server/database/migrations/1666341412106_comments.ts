@@ -7,8 +7,8 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('comment_id')
 
-      table.integer('bill_id').references('bill_id').inTable('bills')
-      table.integer('user_id').references('user_id').inTable('users')
+      table.integer('bill_id').references('id').inTable('bills')
+      table.integer('user_id').references('id').inTable('users')
 
       table.text('message', 'longtext')
       /**

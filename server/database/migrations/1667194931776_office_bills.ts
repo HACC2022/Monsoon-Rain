@@ -7,8 +7,8 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
 
-      table.integer('office_id').unsigned().references('offices.office_id')
-      table.integer('bill_id').unsigned().references('bills.bill_id')
+      table.integer('office_id').unsigned().references('offices.id')
+      table.integer('bill_id').unsigned().references('bills.id')
       table.unique(['office_id', 'bill_id'])
 
       /**
