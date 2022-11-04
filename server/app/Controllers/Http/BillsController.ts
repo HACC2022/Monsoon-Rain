@@ -156,7 +156,7 @@ export default class BillsController {
 
   public async postTestimony({ request, response }: HttpContextContract) {
     try {
-      const userId = request.input('user')
+      const userId = request.input('userId')
       const billId = request.input('billId')
 
       console.log(userId)
