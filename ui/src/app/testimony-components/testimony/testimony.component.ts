@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BillService } from 'src/app/bill.service';
+import { TestimonyService } from 'src/app/testimony.service';
 
 @Component({
   selector: 'app-testimony',
@@ -8,6 +9,7 @@ import { BillService } from 'src/app/bill.service';
   styleUrls: ['./testimony.component.scss'],
 })
 export class TestimonyComponent implements OnInit {
+  billId: number;
   measureType: string = '';
   measureNumber: string = '';
   measureTitle: string = '';
@@ -23,12 +25,17 @@ export class TestimonyComponent implements OnInit {
   users: string[] = [''];
   testimonyId?: number;
 
-  constructor(private billService: BillService, private route: ActivatedRoute) {
+  constructor(
+    private billService: BillService,
+    private testimonyService: TestimonyService,
+    private route: ActivatedRoute
+  ) {
     route.paramMap.subscribe((params: any) => {
       console.log(params.params);
       this.billService
         .getBillById(params.params.id)
         .subscribe(({ data }: any) => {
+          this.billId = data.id;
           this.measureType = data.measure_type;
           this.measureNumber = data.measure_number;
           this.measureTitle = data.measure_title;
@@ -40,6 +47,12 @@ export class TestimonyComponent implements OnInit {
           this.lastUpdated = data.last_updated;
           this.companionBill = data.companion_bill;
           this.currentReferrer = data.committee_referral;
+        });
+
+      this.testimonyService
+        .getTestimonyById(params.params.tid)
+        .subscribe((data) => {
+          console.log(data);
         });
     });
   }

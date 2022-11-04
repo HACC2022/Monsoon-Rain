@@ -45,7 +45,7 @@
       <tr
         *ngFor="let row of rows"
         class="bg-white hover:bg-gray-100 cursor-pointer"
-        [routerLink]="['testimony', 1]"
+        [routerLink]="['testimony', row.id]"
       >
         <th
           scope="row"

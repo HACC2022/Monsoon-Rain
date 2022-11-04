@@ -5,9 +5,9 @@ export default class extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('comment_id')
+      table.increments('id')
 
-      table.integer('bill_id').references('id').inTable('bills')
+      table.integer('testimony_id').references('id').inTable('testimonies')
       table.integer('user_id').references('id').inTable('users')
 
       table.text('message', 'longtext')

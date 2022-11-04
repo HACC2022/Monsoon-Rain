@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { CommentService } from 'src/app/comment.service';
 
 @Component({
   selector: 'app-testimony-comments',
@@ -7,9 +8,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./testimony-comments.component.scss'],
 })
 export class TestimonyCommentsComponent implements OnInit {
+  @Input() billId!: number;
   comment: string = '';
 
-  constructor() {}
+  constructor(private commentService: CommentService) {}
 
   setComment(event: Event) {
     const target = event.target as HTMLTextAreaElement;
@@ -19,7 +21,11 @@ export class TestimonyCommentsComponent implements OnInit {
 
   submitComment(event: Event) {
     event.preventDefault();
+
     console.log(this.comment);
+    if (this.comment) {
+      this.commentService.createComment(this.billId, this.comment);
+    }
   }
 
   ngOnInit(): void {}

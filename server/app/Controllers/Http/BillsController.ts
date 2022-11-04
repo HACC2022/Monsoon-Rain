@@ -1,9 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
-import { Test } from '@japa/runner'
 import Approval from 'App/Models/Approval'
 import Bill from 'App/Models/Bill'
-import Comment from 'App/Models/Comment'
 import ForceUpdate from 'App/Models/ForceUpdate'
 import Office from 'App/Models/Office'
 import Testimony from 'App/Models/Testimony'
@@ -156,57 +154,6 @@ export default class BillsController {
         status: false,
         message: 'Could not find testimonies for given bill id',
       })
-    }
-  }
-
-  public async postComment({ request, response }: HttpContextContract) {
-    try {
-      const userId = request.input('userId')
-      const billId = request.input('billId')
-      const message = request.input('comment')
-
-      const user = await User.findOrFail(userId)
-      const bill = await Bill.findOrFail(billId)
-
-      const comment = new Comment()
-
-      comment.message = message
-
-      await comment.related('user').associate(user)
-      await comment.related('bill').associate(bill)
-
-      await comment.save()
-
-      return response.created({ status: true, data: comment, message: 'Comment created' })
-    } catch (error) {
-      console.log(error.message)
-      return response.badRequest({ status: false, message: 'Could not post comment' })
-    }
-  }
-
-  public async postTestimony({ request, response }: HttpContextContract) {
-    try {
-      const userId = request.input('userId')
-      const billId = request.input('billId')
-
-      const bill = await Bill.findOrFail(billId)
-      const user = await User.findOrFail(userId)
-
-      const testimony = new Testimony()
-
-      await testimony.related('bill').associate(bill)
-      await testimony.related('user').associate(user)
-
-      await testimony.save()
-
-      return response.created({
-        status: true,
-        id: testimony.id,
-        message: 'Testimony created',
-      })
-    } catch (error) {
-      console.log(error.message)
-      return response.badRequest({ status: false, message: 'Could not post testimony' })
     }
   }
 

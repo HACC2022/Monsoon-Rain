@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Bill from './Bill'
 import User from './User'
+import Comment from './Comment'
 
 export default class Testimony extends BaseModel {
   @column({ isPrimary: true })
@@ -21,6 +22,9 @@ export default class Testimony extends BaseModel {
 
   @belongsTo(() => User)
   public user: BelongsTo<typeof User>
+
+  @hasMany(() => Comment)
+  public comments: HasMany<typeof Comment>
 
   // @column()
   // public created_at: string

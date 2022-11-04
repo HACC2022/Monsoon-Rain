@@ -29,7 +29,7 @@ export class TestimonyTableComponent implements OnInit {
     this.route.paramMap.subscribe((params: any) => {
       this.http
         .post(
-          `${environment.apiBaseURL}/bills/testimony`,
+          `${environment.apiBaseURL}/testimony`,
           new HttpParams({
             fromObject: {
               userId: 1,
