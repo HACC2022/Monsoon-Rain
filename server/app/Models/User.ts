@@ -13,6 +13,7 @@ import Position from './Position'
 import Office from './Office'
 import Bill from './Bill'
 import Testimony from './Testimony'
+import Approval from './Approval'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -29,6 +30,8 @@ export default class User extends BaseModel {
 
   @column()
   public password: string
+  @column()
+  public positionId: number
 
   @belongsTo(() => Position)
   public position: BelongsTo<typeof Position>
@@ -41,6 +44,9 @@ export default class User extends BaseModel {
 
   @hasMany(() => Testimony)
   public testimonies: HasMany<typeof Testimony>
+
+  @hasMany(() => Approval)
+  public approvals: HasMany<typeof Approval>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

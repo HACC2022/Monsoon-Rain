@@ -1,24 +1,24 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Bill from 'App/Models/Bill'
 import Comment from 'App/Models/Comment'
+import Testimony from 'App/Models/Testimony'
 import User from 'App/Models/User'
 
 export default class CommentsController {
   public async create({ request, response }: HttpContextContract) {
     try {
       const userId = request.input('userId')
-      const billId = request.input('billId')
+      const testimonyId = request.input('testimonyId')
       const message = request.input('message')
 
       const user = await User.findOrFail(userId)
-      const bill = await Bill.findOrFail(billId)
+      const testimony = await Testimony.findOrFail(testimonyId)
 
       const comment = new Comment()
 
       comment.message = message
 
       await comment.related('user').associate(user)
-      await comment.related('bill').associate(bill)
+      await comment.related('testimony').associate(testimony)
 
       await comment.save()
 

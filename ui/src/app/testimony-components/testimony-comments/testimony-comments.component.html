@@ -1,10 +1,16 @@
 <div>
   <div class="text-sm text-gray-500 uppercase">Comments</div>
   <div class="py-3">
-    <app-testimony-comment></app-testimony-comment>
+    <app-testimony-comment
+      *ngFor="let comment of comments"
+      [name]="comment.user.first_name + ' ' + comment.user.last_name"
+      [createdAt]="comment.created_at"
+      [message]="comment.message"
+    ></app-testimony-comment>
     <form (submit)="submitComment($event)" action="">
       <textarea
         (change)="setComment($event)"
+        [value]="comment"
         id="message"
         rows="2"
         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"

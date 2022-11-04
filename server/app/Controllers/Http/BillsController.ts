@@ -157,31 +157,6 @@ export default class BillsController {
     }
   }
 
-  public async postApproval({ request, response }: HttpContextContract) {
-    try {
-      const userId = request.input('userId')
-      const billId = request.input('billId')
-      const type = request.input('type')
-
-      const bill = await Bill.findOrFail(billId)
-      const user = await User.findOrFail(userId)
-
-      const approval = new Approval()
-
-      approval.type = type
-
-      await approval.related('bill').associate(bill)
-      await approval.related('approver').associate(user)
-
-      await approval.save()
-
-      return response.created({ status: true, data: approval, message: 'Approval created' })
-    } catch (error) {
-      console.log(error.message)
-      return response.badRequest({ status: false, message: 'Could not post approval' })
-    }
-  }
-
   public async postAssignUsers({ request, response }: HttpContextContract) {
     try {
       const userIds: number[] = request.input('users')
@@ -227,27 +202,6 @@ export default class BillsController {
       return response.badRequest({
         status: false,
         message: 'Could not update bill with new offices',
-      })
-    }
-  }
-
-  public async postUpdateTestimony({ request, response }: HttpContextContract) {
-    try {
-      const testimonyId = request.param('id')
-      const body = request.input('body')
-
-      const updatedTestimony = await Testimony.query().where('id', testimonyId).update({ body })
-
-      return response.ok({
-        status: true,
-        data: updatedTestimony,
-        message: 'Testimony updated with new body',
-      })
-    } catch (error) {
-      console.log(error.message)
-      return response.badRequest({
-        status: false,
-        message: 'Could not update testimony with new body',
       })
     }
   }

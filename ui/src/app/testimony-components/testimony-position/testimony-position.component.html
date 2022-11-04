@@ -1,4 +1,4 @@
-<form [formGroup]="testimonyForm" (ngSubmit)="submitTestimony()" class="pb-10">
+<form [formGroup]="testimonyForm" (ngSubmit)="submitTestimony()">
   <div class="text-sm text-gray-500 uppercase pb-3">Department's Position</div>
   <div class="flex pb-3">
     <div class="flex items-center mr-4">
@@ -44,14 +44,46 @@
       >
     </div>
   </div>
+
+  <div class="flex items-center pb-3">
+    <input
+      id="checked-checkbox"
+      type="checkbox"
+      value=""
+      class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500"
+      formControlName="same"
+    />
+    <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900"
+      >Same as previous testimony</label
+    >
+  </div>
   <textarea
     id="message"
     rows="4"
     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
     placeholder="Your message..."
-    formControlName="testimony"
+    formControlName="body"
   ></textarea>
-  <div class="text-right pt-3">
+  <div class="flex justify-between pt-3">
+    <div>
+      <p class="mt-2 text-sm text-gray-500 flex" *ngIf="updateSuccess">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-5 h-5 mr-1 text-green-600"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 12.75l6 6 9-13.5"
+          />
+        </svg>
+        Successfully set!
+      </p>
+    </div>
     <button
       type="submit"
       class="py-2 px-4 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { TestimonyService } from 'src/app/testimony.service';
+import { ActivatedRoute } from '@angular/router';
 
 export enum ApprovalStates {
   APPROVED = 'approved',
@@ -25,17 +27,28 @@ export enum ApprovalStates {
   styleUrls: ['./approval-status.component.scss'],
 })
 export class ApprovalStatusComponent implements OnInit {
+  @Input() stage: string;
+  @Input() type: string;
   @Input() status!: string;
 
   show = false;
-  constructor() {}
+  constructor(
+    private testimonyService: TestimonyService,
+    private route: ActivatedRoute
+  ) {}
 
   swapShowOptions() {
     this.show = !this.show;
   }
 
-  changeStageStatus(status: string) {
+  changeStageStatus(type: string) {
     this.show = false;
+
+    this.route.paramMap.subscribe((params: any) => {
+      this.testimonyService
+        .createApproval(params.params.tid, type, this.stage)
+        .subscribe();
+    });
   }
 
   ngOnInit(): void {}

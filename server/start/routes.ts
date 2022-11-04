@@ -32,10 +32,8 @@ Route.get('bills/:id', 'BillsController.getBillById')
 Route.get('bills/measure/:id', 'BillsController.getBillByMeasureNumber')
 Route.get('bills/search/:type', 'BillsController.sortBills')
 Route.get('bills/testimonies/:id', 'BillsController.getAllTestimonyForBillById')
-Route.post('bills/testimony/approval/:id', 'BillsController.postApproval')
 Route.post('bills/assign/users', 'BillsController.postAssignUsers')
 Route.post('bills/assign/offices', 'BillsController.postAssignOffices')
-Route.patch('bills/testimonies/:id', 'BillsController.postUpdateTestimony')
 Route.get('bill/interval', 'BillsController.getBillFetchInterval')
 Route.patch('bill/interval', 'BillsController.updateBillFetchInterval')
 Route.get('bill/force', 'BillsController.forceUpdateBills')
@@ -52,6 +50,10 @@ Route.post('comment/', 'CommentsController.create')
 /** Testimonies */
 Route.post('testimony/', 'TestimoniesController.create')
 Route.get('testimony/:id', 'TestimoniesController.getById')
+Route.patch('testimony/:id', 'TestimoniesController.update')
+
+/** Approvals */
+Route.post('approval', 'ApprovalsController.create')
 
 Route.get('/', async () => {
   return { hello: 'world' }

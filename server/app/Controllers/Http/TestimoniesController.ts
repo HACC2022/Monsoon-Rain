@@ -9,7 +9,16 @@ export default class TestimoniesController {
   public async getById({ request, response }: HttpContextContract) {
     try {
       const id = request.param('id')
-      const testimony = await Testimony.query().preload('comments').where('id', id)
+      const testimony = await Testimony.query()
+        .preload('comments', (query) => {
+          query.preload('user')
+        })
+        .preload('approvals')
+        .preload('user', (query) => {
+          query.preload('position')
+        })
+        .where('id', id)
+        .firstOrFail()
 
       return response.ok({
         status: true,
@@ -44,6 +53,31 @@ export default class TestimoniesController {
     } catch (error) {
       console.log(error.message)
       return response.badRequest({ status: false, message: 'Could not post testimony' })
+    }
+  }
+
+  public async update({ request, response }: HttpContextContract) {
+    try {
+      const testimonyId = request.param('id')
+      const body = request.input('body')
+      const position = request.input('position')
+      const same = request.input('same')
+
+      const updatedTestimony = await Testimony.query()
+        .where('id', testimonyId)
+        .update({ body, position, same })
+
+      return response.ok({
+        status: true,
+        data: updatedTestimony,
+        message: 'Testimony updated with new body',
+      })
+    } catch (error) {
+      console.log(error.message)
+      return response.badRequest({
+        status: false,
+        message: 'Could not update testimony with new body',
+      })
     }
   }
 }

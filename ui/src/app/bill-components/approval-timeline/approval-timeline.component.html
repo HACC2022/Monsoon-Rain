@@ -1,9 +1,10 @@
 <ol class="items-center sm:flex">
   <li
-    *ngFor="let stage of stages"
-    [stage]="stage.name"
-    [status]="stage.status"
-    [user]="stage.user"
+    *ngFor="let stage of stages | keyvalue"
+    [name]="stage.value.name"
+    [stage]="stage.key"
+    [status]="stage.value.status"
+    [user]="stage.value.user"
     app-approval-stage
     class="relative mb-6 sm:mb-0 w-full"
   ></li>

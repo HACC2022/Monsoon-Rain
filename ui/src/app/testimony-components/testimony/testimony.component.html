@@ -33,10 +33,19 @@
       Back to bill
     </a>
   </div>
-  <div class="mb-10">
+  <div class="mb-20">
     <div class="text-sm text-gray-500 uppercase pb-8">Approvals</div>
-    <app-approval-timeline></app-approval-timeline>
+    <app-approval-timeline [approvals]="approvals"></app-approval-timeline>
   </div>
-  <app-testimony-position></app-testimony-position>
-  <app-testimony-comments [billId]="billId"></app-testimony-comments>
+  <div class="mb-10">
+    <app-testimony-position
+      [position]="position"
+      [body]="body"
+      [same]="same"
+    ></app-testimony-position>
+  </div>
+  <app-testimony-comments
+    [testimonyId]="testimonyId"
+    [comments]="comments"
+  ></app-testimony-comments>
 </div>

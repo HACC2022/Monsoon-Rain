@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Template, generate } from '@pdfme/generator';
+import { TestimonyService } from 'src/app/testimony.service';
+
+export interface Stage {
+  name: string;
+  status: string;
+  user: string;
+}
 
 @Component({
   selector: 'app-approval-timeline',
@@ -7,30 +14,42 @@ import { Template, generate } from '@pdfme/generator';
   styleUrls: ['./approval-timeline.component.scss'],
 })
 export class ApprovalTimelineComponent implements OnInit {
-  stages = [
-    {
-      name: 'Ready for approval',
-      status: 'approved',
-      user: 'J. Preheim',
+  @Input() approvals: any[] = [];
+
+  stages: { [key: string]: Stage } = {
+    ready: {
+      name: 'Ready',
+      status: 'clear',
+      user: '',
     },
-    {
+    office: {
       name: 'Office approval',
-      status: 'modify',
-      user: 'J. Preheim',
+      status: 'clear',
+      user: '',
     },
-    {
+    pipe: {
       name: 'PIPE approval',
       status: 'clear',
-      user: 'J. Preheim',
+      user: '',
     },
-    {
+    final: {
       name: 'Final approval',
       status: 'clear',
-      user: 'J. Preheim',
+      user: '',
     },
-  ];
+  };
 
-  constructor() {}
+  constructor(private testimonyService: TestimonyService) {
+    setTimeout(() => {
+      console.log(this.approvals);
+      this.approvals.forEach((approval) => {
+        this.stages[approval.stage].status = approval.type;
+        this.stages[
+          approval.stage
+        ].user = `${approval.user.first_name} ${approval.user.last_name}`;
+      });
+    }, 1000);
+  }
 
   generatePDF() {
     (async () => {

@@ -1,26 +1,29 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
-import Bill from './Bill'
 import User from './User'
+import Testimony from './Testimony'
 
 export default class Approval extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
   @column()
-  public billId: number
-
-  @column()
   public userId: number
 
-  @belongsTo(() => Bill)
-  public bill: BelongsTo<typeof Bill>
+  @column()
+  public testimonyId: number
+
+  @belongsTo(() => Testimony)
+  public testimony: BelongsTo<typeof Testimony>
 
   @belongsTo(() => User)
-  public approver: BelongsTo<typeof User>
+  public user: BelongsTo<typeof User>
 
   @column()
   public type: 'approved' | 'modify' | 'clear'
+
+  @column()
+  public stage: 'ready' | 'office' | 'pipe' | 'final'
 
   @column()
   public created_at: string

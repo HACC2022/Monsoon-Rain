@@ -3,6 +3,7 @@ import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:
 import Bill from './Bill'
 import User from './User'
 import Comment from './Comment'
+import Approval from './Approval'
 
 export default class Testimony extends BaseModel {
   @column({ isPrimary: true })
@@ -25,6 +26,9 @@ export default class Testimony extends BaseModel {
 
   @hasMany(() => Comment)
   public comments: HasMany<typeof Comment>
+
+  @hasMany(() => Approval)
+  public approvals: HasMany<typeof Approval>
 
   // @column()
   // public created_at: string

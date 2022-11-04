@@ -6,9 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./approval-stage.component.scss'],
 })
 export class ApprovalStageComponent implements OnInit {
+  @Input() name!: string;
   @Input() stage!: string;
   @Input() status!: string;
   @Input() user!: string;
+
   constructor() {}
 
   ngOnInit(): void {}

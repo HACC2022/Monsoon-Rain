@@ -14,6 +14,9 @@ export default class Comment extends BaseModel {
   @column()
   public userId: number
 
+  @column()
+  public testimonyId: number
+
   @belongsTo(() => User)
   public user: BelongsTo<typeof User>
 

@@ -6,19 +6,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CommentService {
-  createComment(billId: number, message: string) {
-    this.http
-      .post(
-        `${environment.apiBaseURL}/comment`,
-        new HttpParams({
-          fromObject: {
-            userId: 1,
-            billId,
-            message,
-          },
-        })
-      )
-      .subscribe();
+  createComment(testimonyId: number, message: string) {
+    return this.http.post(
+      `${environment.apiBaseURL}/comment`,
+      new HttpParams({
+        fromObject: {
+          userId: 1,
+          testimonyId,
+          message,
+        },
+      })
+    );
   }
 
   constructor(private http: HttpClient) {}

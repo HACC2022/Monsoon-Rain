@@ -23,7 +23,17 @@ export class TestimonyComponent implements OnInit {
   currentReferrer?: string;
   offices: string[] = [];
   users: string[] = [''];
-  testimonyId?: number;
+  testimonyId: number;
+
+  approvals: any[] = [];
+  comments: any[] = [];
+  position: string;
+  same: boolean;
+  body: string;
+
+  getTestimony() {
+    return this.testimonyService.getTestimony();
+  }
 
   constructor(
     private billService: BillService,
@@ -31,7 +41,7 @@ export class TestimonyComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     route.paramMap.subscribe((params: any) => {
-      console.log(params.params);
+      this.testimonyId = params.params.tid;
       this.billService
         .getBillById(params.params.id)
         .subscribe(({ data }: any) => {
@@ -51,8 +61,13 @@ export class TestimonyComponent implements OnInit {
 
       this.testimonyService
         .getTestimonyById(params.params.tid)
-        .subscribe((data) => {
+        .subscribe(({ data }: any) => {
           console.log(data);
+          this.approvals = data.approvals;
+          this.comments = data.comments;
+          this.position = data.position;
+          this.same = data.same;
+          this.body = data.body;
         });
     });
   }
