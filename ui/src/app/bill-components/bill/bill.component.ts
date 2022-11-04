@@ -25,8 +25,9 @@ export class BillComponent implements OnInit {
   lastUpdated?: string;
   companionBill?: string;
   currentReferrer?: string;
-  offices: string[] = [];
-  users: string[] = [];
+  offices: any[] = [];
+  users: any[] = [];
+  testimonies: any[] = [];
   videos?: IconDataDisplay[];
   reports?: IconDataDisplay[];
   versions?: IconDataDisplay[];
@@ -37,6 +38,7 @@ export class BillComponent implements OnInit {
       this.billService
         .getBillById(params.params.id)
         .subscribe(({ data }: any) => {
+          console.log(data);
           this.measureType = data.measure_type;
           this.measureNumber = data.measure_number;
           this.measureTitle = data.measure_title;
@@ -48,6 +50,9 @@ export class BillComponent implements OnInit {
           this.lastUpdated = dayjs.unix(data.last_updated).toString();
           this.companionBill = data.companion_bill;
           this.currentReferrer = data.committee_referral;
+          this.offices = data.offices;
+          this.users = data.users;
+          this.testimonies = data.testimonies;
 
           let hearings: DateTimes[] = [];
 

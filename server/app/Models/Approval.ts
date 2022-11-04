@@ -20,7 +20,7 @@ export default class Approval extends BaseModel {
   public approver: BelongsTo<typeof User>
 
   @column()
-  public type: string
+  public type: 'approved' | 'modify' | 'clear'
 
   @column()
   public created_at: string

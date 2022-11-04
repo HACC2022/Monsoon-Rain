@@ -25,7 +25,9 @@
     </div>
     <div class="mt-5">
       <span *ngFor="let assignee of assignees" class="-mr-2">
-        <app-avatar [name]="assignee"></app-avatar>
+        <app-avatar
+          [name]="assignee.first_name + ' ' + assignee.last_name"
+        ></app-avatar>
       </span>
     </div>
   </div>
@@ -49,16 +51,17 @@
           scope="row"
           class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
         >
-          {{ row.date }}
+          {{ row.created_at }}
         </th>
         <td class="py-4 px-6">
           {{ row.status }}
         </td>
         <td class="py-4 px-6">
-          {{ row.creator }}
+          {{ row.user.first_name }}
+          {{ row.user.last_name }}
         </td>
         <td class="py-4 px-6">
-          {{ row.testimony }}
+          {{ row.body }}
         </td>
         <td class="py-4 px-6">
           <svg

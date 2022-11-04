@@ -16,8 +16,8 @@ export interface TableRow {
   styleUrls: ['./testimony-table.component.scss'],
 })
 export class TestimonyTableComponent implements OnInit {
-  @Input() rows!: TableRow[];
-  @Input() assignees?: string[] = [];
+  @Input() rows!: any[];
+  @Input() assignees?: any[];
 
   constructor(
     private http: HttpClient,
@@ -32,7 +32,7 @@ export class TestimonyTableComponent implements OnInit {
           `${environment.apiBaseURL}/bills/testimony`,
           new HttpParams({
             fromObject: {
-              user: 1,
+              userId: 1,
               billId: params.params.id,
             },
           })

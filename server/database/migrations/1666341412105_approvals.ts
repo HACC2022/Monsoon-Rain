@@ -11,7 +11,9 @@ export default class extends BaseSchema {
 
       table.integer('approver').references('id').inTable('users')
 
-      table.text('type', 'longtext')
+      table.unique(['bill_id', 'approver'])
+
+      table.enum('type', ['approved', 'modify', 'clear'])
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

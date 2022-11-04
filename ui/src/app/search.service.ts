@@ -9,6 +9,10 @@ export class SearchService {
   bills: any[] = [];
 
   constructor(private http: HttpClient) {
+    this.getAllBills();
+  }
+
+  getAllBills() {
     this.http
       .get(`${environment.apiBaseURL}/bills`)
       .subscribe(({ data }: any) => {

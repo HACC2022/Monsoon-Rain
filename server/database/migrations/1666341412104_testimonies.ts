@@ -9,6 +9,10 @@ export default class extends BaseSchema {
 
       table.text('date', 'longtext')
 
+      table.enum('position', ['support', 'oppose', 'comments'])
+
+      table.boolean('same')
+
       table.integer('bill_id').unsigned().references('bills.id').onDelete('CASCADE')
 
       table.integer('user_id').references('id').inTable('users')

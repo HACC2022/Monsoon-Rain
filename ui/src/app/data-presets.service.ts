@@ -41,17 +41,17 @@ export class DataPresetsService {
       .subscribe(({ data }: any) => {
         console.log(data);
         data.forEach((office: any) => {
-          this.offices[office.office_id] = office.abbreviation;
+          this.offices[office.id] = office.abbreviation;
         });
       });
 
     this.http
       .get(`${environment.apiBaseURL}/users`)
       .subscribe(({ data }: any) => {
-        console.log(data);
         data.forEach((user: any) => {
-          this.users[user.user_id] = `${user.first_name} ${user.last_name}`;
+          this.users[user.id] = `${user.first_name} ${user.last_name}`;
         });
+        console.log(this.users);
       });
 
     this.updateBillInterval();

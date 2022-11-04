@@ -24,21 +24,6 @@
     [hearings]="hearings"
   ></app-bill-information>
 
-  <app-testimony-table
-    [rows]="[
-      {
-        date: '06/23/2020',
-        status: 'Approved',
-        creator: 'Joe Nakana',
-        testimony: 'a few words about it'
-      },
-      {
-        date: '06/23/2020',
-        status: 'Approved',
-        creator: 'Joe Nakana',
-        testimony: 'a few words about it'
-      }
-    ]"
-  >
+  <app-testimony-table [assignees]="users" [rows]="testimonies">
   </app-testimony-table>
 </div>

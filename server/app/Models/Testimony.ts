@@ -28,6 +28,12 @@ export default class Testimony extends BaseModel {
   @column()
   public body: string
 
+  @column()
+  public position: 'support' | 'oppose' | 'comments'
+
+  @column()
+  public same: boolean
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

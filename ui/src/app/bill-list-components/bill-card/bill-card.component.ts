@@ -30,6 +30,7 @@ export class BillCardComponent implements OnInit {
   selectBill(event: Event) {
     if (this.assignService.enabled) {
       if (!this.getIsSelected()) {
+        console.log(this.id);
         this.assignService.selectBill(this.id);
       } else {
         this.assignService.deselectBill(this.id);

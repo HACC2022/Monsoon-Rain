@@ -7,8 +7,8 @@
     </p>
   </div>
 
-  <div class="grid lg:grid-cols-4 gap-5 md:grid-cols-1">
-    <div class="col-span-1">
+  <div class="grid lg:grid-cols-4 gap-5 grid-cols-1">
+    <div class="lg:col-span-1">
       <app-bill-actions></app-bill-actions>
       <app-bill-filter></app-bill-filter>
     </div>
@@ -16,13 +16,14 @@
       <app-bill-search></app-bill-search>
       <app-bill-card
         *ngFor="let bill of getBills()"
-        [id]="bill.bill_id"
+        [id]="bill.id"
         [billType]="bill.measure_type"
         [billNumber]="bill.measure_number"
         [measureTitle]="bill.measure_title"
         [description]="bill.description"
         [action]="'Monitor'"
         [hearingDate]="'06/23/2023 6:00 PM'"
+        [offices]="bill.offices"
       ></app-bill-card>
     </div>
   </div>

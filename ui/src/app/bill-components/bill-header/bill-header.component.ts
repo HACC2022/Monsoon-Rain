@@ -13,10 +13,11 @@ export class BillHeaderComponent implements OnInit {
   @Input() introducer?: string;
   @Input() description?: string;
   @Input() status?: string;
-  @Input() offices?: string[];
-  @Input() users?: string[];
+  @Input() offices?: any[];
+  @Input() users?: any[];
 
-  constructor() { // assignedUsers?: string[] // assignedOffices?: string[], // status?: string, // introducer?: string, // reportTitle: string, // measureTitle: string, // code: string,
+  constructor() {
+    // assignedUsers?: string[] // assignedOffices?: string[], // status?: string, // introducer?: string, // reportTitle: string, // measureTitle: string, // code: string,
     // this.code = code;
     // this.measureTitle = measureTitle;
     // this.reportTitle = reportTitle;

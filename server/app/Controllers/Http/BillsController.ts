@@ -12,6 +12,18 @@ import cron from 'node-cron'
 // import exec from 'child_process'
 
 export default class BillsController {
+  public async test({ response }: HttpContextContract) {
+    const bill = await Bill.findOrFail(1)
+
+    const offices = await bill.related('offices').query()
+
+    return response.ok({
+      data: {
+        bill,
+        offices,
+      },
+    })
+  }
   public async forceUpdateBills({ response }: HttpContextContract) {
     // exec('python3 ../../../../../../scripts/scrape.py', () => {})
 
@@ -60,7 +72,8 @@ export default class BillsController {
 
   public async getAllBills({ response }: HttpContextContract) {
     try {
-      const bills = await Database.from('bills').limit(20)
+      const bills = await Bill.query().preload('offices').preload('users').limit(20)
+
       return response.ok({ status: true, data: bills, message: 'all bills returned' })
     } catch (error) {
       console.log(error.message)
@@ -71,7 +84,15 @@ export default class BillsController {
   public async getBillById({ request, response }: HttpContextContract) {
     try {
       const id = request.param('id')
-      const bill = await Bill.find(id)
+      const bill = await Bill.query()
+        .preload('offices')
+        .preload('users')
+        .preload('testimonies', (query) => {
+          query.preload('user')
+        })
+        .where('id', id)
+        .firstOrFail()
+
       return response.ok({ status: true, data: bill, message: 'Bill returned' })
     } catch (error) {
       console.log(error.message)
@@ -216,8 +237,10 @@ export default class BillsController {
 
   public async postAssignUsers({ request, response }: HttpContextContract) {
     try {
-      const userIds: number[] = request.input('user')
+      const userIds: number[] = request.input('users')
       const billId = request.input('billId')
+
+      console.log(userIds)
 
       const bill = await Bill.findOrFail(billId)
 
@@ -261,14 +284,12 @@ export default class BillsController {
     }
   }
 
-  public async postAssignTestimony({ request, response }: HttpContextContract) {
+  public async postUpdateTestimony({ request, response }: HttpContextContract) {
     try {
-      const testimony = request.param('testimony_body')
-      const id = request.param('bill_id')
+      const testimonyId = request.param('id')
+      const body = request.input('body')
 
-      const updatedTestimony = await Testimony.query()
-        .where('bill_id', id)
-        .update({ body: testimony })
+      const updatedTestimony = await Testimony.query().where('id', testimonyId).update({ body })
 
       return response.ok({
         status: true,
