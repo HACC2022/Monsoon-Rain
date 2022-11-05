@@ -11,8 +11,6 @@ export default class extends BaseSchema {
 
       table.integer('user_id').references('id').inTable('users')
 
-      table.unique(['testimony_id', 'user_id'])
-
       table.enum('type', ['approved', 'modify', 'clear'])
 
       table.enum('stage', ['ready', 'office', 'pipe', 'final'])

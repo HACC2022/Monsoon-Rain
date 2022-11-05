@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { TestimonyService } from 'src/app/testimony.service';
+import { TestimonyService, updateTestimony } from 'src/app/testimony.service';
 
 @Component({
   selector: 'app-testimony-position',
@@ -46,6 +46,8 @@ export class TestimonyPositionComponent implements OnInit {
           .updateTestimony(params.params.tid, same, position, body)
           .subscribe(() => {
             this.updateSuccess = true;
+
+            this.testimonyService.updateSubject.next(updateTestimony);
 
             setTimeout(() => (this.updateSuccess = false), 5000);
           });

@@ -42,6 +42,8 @@ export default class extends BaseSchema {
 
       table.text('code', 'longtext')
 
+      table.enum('status', ['monitor', 'testimony', 'uncategorized'])
+
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

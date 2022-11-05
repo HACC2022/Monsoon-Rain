@@ -1,12 +1,16 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+
+export const updateTestimony = Symbol('updateTestimony');
 
 @Injectable({
   providedIn: 'root',
 })
 export class TestimonyService {
-  testimony: any;
+  public updateSubject = new Subject<Symbol>();
+  private testimony: any;
 
   getTestimony() {
     return this.testimony;

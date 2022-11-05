@@ -13,7 +13,7 @@ export default class TestimoniesController {
         .preload('comments', (query) => {
           query.preload('user')
         })
-        .preload('approvals')
+        .preload('approvals', (query) => query.preload('user', (q) => q.preload('position')))
         .preload('user', (query) => {
           query.preload('position')
         })

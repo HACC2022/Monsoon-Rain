@@ -35,7 +35,17 @@
   </div>
   <div class="mb-20">
     <div class="text-sm text-gray-500 uppercase pb-8">Approvals</div>
-    <app-approval-timeline [approvals]="approvals"></app-approval-timeline>
+    <app-approval-timeline
+      [approvals]="approvals"
+      [date]="date"
+      [time]="time"
+      [location]="location"
+      [committee]="currentReferrer"
+      [personTestifying]="personTestifying"
+      [purpose]="description"
+      [position]="body"
+      [title]="title"
+    ></app-approval-timeline>
   </div>
   <div class="mb-10">
     <app-testimony-position
