@@ -13,7 +13,7 @@ export class BillCardComponent implements OnInit {
   @Input() billNumber!: string;
   @Input() measureTitle!: string;
   @Input() description!: string;
-  @Input() action?: string;
+  @Input() action!: string;
   @Input() hearingDate!: string;
   @Input() offices!: any[];
 

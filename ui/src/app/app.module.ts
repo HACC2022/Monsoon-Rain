@@ -38,6 +38,10 @@ import { ApprovalStageComponent } from './approval-stage/approval-stage.componen
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { DateListComponent } from './date-list/date-list.component';
+import { ActionMonitorComponent } from './action-monitor/action-monitor.component';
+import { ActionUncategorizedComponent } from './action-uncategorized/action-uncategorized.component';
+import { ActionTestimonyComponent } from './action-testimony/action-testimony.component';
+import { DataDisplayActionComponent } from './data-display-action/data-display-action.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +77,10 @@ import { DateListComponent } from './date-list/date-list.component';
     LoginComponent,
     RegisterComponent,
     DateListComponent,
+    ActionMonitorComponent,
+    ActionUncategorizedComponent,
+    ActionTestimonyComponent,
+    DataDisplayActionComponent,
   ],
   imports: [
     BrowserModule,

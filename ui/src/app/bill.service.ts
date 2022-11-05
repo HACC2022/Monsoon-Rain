@@ -10,5 +10,11 @@ export class BillService {
   getBillById(id: string) {
     return this.http.get(`${environment.apiBaseURL}/bills/${id}`);
   }
+
+  updateAction(id: string, action: string) {
+    return this.http.patch(`${environment.apiBaseURL}/bill/action/${id}`, {
+      action,
+    });
+  }
   constructor(private http: HttpClient) {}
 }

@@ -79,6 +79,29 @@ export default class BillsController {
     }
   }
 
+  public async getBillByOffice({ request, response }: HttpContextContract) {
+    try {
+      const officeId: number = request.param('id')
+      let bills
+
+      if (Number(officeId) !== -1) {
+        bills = await Bill.query()
+          .whereHas('offices', (q) => q.where('office_id', officeId))
+          .preload('offices')
+          .preload('users')
+          .limit(20)
+      } else {
+        console.log(officeId)
+        bills = await Database.from('bills').limit(20)
+      }
+
+      return response.ok({ status: true, data: bills, message: 'all bills returned' })
+    } catch (error) {
+      console.log(error.message)
+      return response.badRequest({ status: false, message: 'Could not get all bills' })
+    }
+  }
+
   public async getBillById({ request, response }: HttpContextContract) {
     try {
       const id = request.param('id')
@@ -188,6 +211,8 @@ export default class BillsController {
 
       const bill = await Bill.findOrFail(billId)
 
+      console.log(request.input('offices'))
+
       await officeIds.map(async (id) => {
         const office = await Office.findOrFail(id)
         await bill.related('offices').attach([office.id])
@@ -197,6 +222,25 @@ export default class BillsController {
         status: true,
         message: 'Bill updated with new offices',
       })
+    } catch (error) {
+      console.log(error.message)
+      return response.badRequest({
+        status: false,
+        message: 'Could not update bill with new offices',
+      })
+    }
+  }
+
+  public async updateAction({ request, response }: HttpContextContract) {
+    try {
+      const id = request.param('id')
+      const action = request.input('action')
+
+      await Bill.query().where('id', id).update({
+        action,
+      })
+
+      response.ok({ status: true })
     } catch (error) {
       console.log(error.message)
       return response.badRequest({

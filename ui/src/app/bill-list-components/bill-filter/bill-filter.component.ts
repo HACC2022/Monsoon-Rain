@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataPresetsService } from 'src/app/data-presets.service';
+import { SearchService } from 'src/app/search.service';
 
 @Component({
   selector: 'app-bill-filter',
@@ -7,9 +8,12 @@ import { DataPresetsService } from 'src/app/data-presets.service';
   styleUrls: ['./bill-filter.component.scss'],
 })
 export class BillFilterComponent implements OnInit {
-  offices: Set<string> = new Set<string>();
+  office: number;
 
-  constructor(private dataPresetsService: DataPresetsService) {}
+  constructor(
+    private dataPresetsService: DataPresetsService,
+    private searchService: SearchService
+  ) {}
 
   getOffices() {
     return this.dataPresetsService.getOffices();
@@ -17,15 +21,13 @@ export class BillFilterComponent implements OnInit {
 
   assignOffice(event: Event) {
     const target = event.target as HTMLSelectElement;
-    const { selectedOptions } = target;
+    const { value } = target;
 
-    for (let i = 0; i < selectedOptions.length; i++) {
-      this.offices.add(selectedOptions[i].value);
-    }
+    this.office = Number(value);
   }
 
   filter() {
-    console.log(this.offices);
+    this.searchService.filter(this.office);
   }
 
   ngOnInit(): void {}

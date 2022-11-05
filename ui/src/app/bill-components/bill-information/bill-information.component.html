@@ -1,6 +1,6 @@
 <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-5 gap-y-16 py-12">
+  <app-data-display-action [action]="action"></app-data-display-action>
   <app-data-display [label]="'Status'" [data]="status"></app-data-display>
-  <app-data-display [label]="'Action'" [data]="action"></app-data-display>
   <app-data-display
     [label]="'Last Updated'"
     [data]="lastUpdated"
@@ -63,7 +63,11 @@
       />
     </svg>
   </app-icon-data-display>
-  <app-date-list [label]="'Date & location'" [data]="hearings">
+  <app-date-list
+    class="col-span-2"
+    [label]="'Date & location'"
+    [data]="hearings"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"

@@ -38,4 +38,13 @@ export class SearchService {
         this.bills = data;
       });
   }
+
+  filter(id: number) {
+    this.http
+      .get(`${environment.apiBaseURL}/bills/office/${id}`)
+      .subscribe(({ data }: any) => {
+        console.log(data);
+        this.bills = data;
+      });
+  }
 }

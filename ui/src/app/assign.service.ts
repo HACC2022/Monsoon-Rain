@@ -46,28 +46,27 @@ export class AssignService {
   assign() {
     let usersPost$: Observable<any> = of(null);
     let officesPost$: Observable<any> = of(null);
+
+    console.log(Array.from(this.assignedOffices));
+
     this.selectedBills.forEach((bill) => {
       console.log(Array.from(this.assignedUsers));
       if (this.assignedUsers.size > 0) {
         usersPost$ = this.http.post(
           `${environment.apiBaseURL}/bills/assign/users/`,
-          new HttpParams({
-            fromObject: {
-              billId: bill,
-              users: Array.from(this.assignedUsers),
-            },
-          })
+          {
+            billId: bill,
+            users: [...this.assignedUsers],
+          }
         );
       }
       if (this.assignedOffices.size > 0) {
         officesPost$ = this.http.post(
           `${environment.apiBaseURL}/bills/assign/offices/`,
-          new HttpParams({
-            fromObject: {
-              billId: bill,
-              offices: Array.from(this.assignedOffices),
-            },
-          })
+          {
+            billId: bill,
+            offices: [...this.assignedOffices],
+          }
         );
       }
 

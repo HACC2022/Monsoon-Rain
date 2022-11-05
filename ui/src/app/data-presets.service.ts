@@ -19,6 +19,7 @@ export class DataPresetsService {
   intervalLastUpdated?: string;
 
   getOffices() {
+    console.log(this.offices);
     return this.offices;
   }
 

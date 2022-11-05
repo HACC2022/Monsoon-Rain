@@ -9,7 +9,7 @@ import { IconDataDisplay } from '../icon-data-display/icon-data-display.componen
 })
 export class BillInformationComponent implements OnInit {
   @Input() status?: string;
-  @Input() action?: string;
+  @Input() action!: string;
   @Input() lastUpdated?: string;
   @Input() companionBill?: string;
   @Input() currentReferrer?: string;

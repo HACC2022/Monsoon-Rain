@@ -21,7 +21,7 @@ export class BillComponent implements OnInit {
   introducer: string = '';
   description: string = '';
   status: string = '';
-  action?: string;
+  action!: string;
   lastUpdated?: string;
   companionBill?: string;
   currentReferrer?: string;

@@ -21,7 +21,7 @@ export default class extends BaseSchema {
 
       table.text('committee_referral', 'longtext')
 
-      table.text('action', 'longtext')
+      table.enum('action', ['monitor', 'testimony', 'uncategorized'])
 
       table.text('status', 'longtext')
 
@@ -41,8 +41,6 @@ export default class extends BaseSchema {
       table.text('year', 'longtext')
 
       table.text('code', 'longtext')
-
-      table.enum('status', ['monitor', 'testimony', 'uncategorized'])
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

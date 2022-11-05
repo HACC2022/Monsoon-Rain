@@ -7,18 +7,20 @@
       {{ label }}
     </div>
 
-    <div class="my-3" *ngFor="let d of data">
-      <a
-        (click)="downloadCalendarInvite(d.url)"
-        class="flex underline decoration-2 underline-offset-4 hover:text-blue-500 transition-all duration-200 cursor-pointer"
-        rel="”noopener”"
-        target="_blank"
-      >
-        <div>
-          <div>{{ d.date }}</div>
-          <div class="pr-2">{{ d.location }}</div>
-        </div>
-      </a>
+    <div class="grid grid-cols-3">
+      <div class="my-3" *ngFor="let d of data">
+        <a
+          (click)="downloadCalendarInvite(d.url)"
+          class="flex underline decoration-2 underline-offset-4 hover:text-blue-500 transition-all duration-200 cursor-pointer"
+          rel="”noopener”"
+          target="_blank"
+        >
+          <div>
+            <div>{{ d.date }}</div>
+            <div class="pr-2">{{ d.location }}</div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>

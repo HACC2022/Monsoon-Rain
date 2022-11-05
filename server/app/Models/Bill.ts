@@ -30,7 +30,7 @@ export default class Bill extends BaseModel {
   public committee_referral: string
 
   @column()
-  public action: string
+  public action: 'monitor' | 'testimony' | 'uncategorized'
 
   @column()
   public status: string
